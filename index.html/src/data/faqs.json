@@ -1,0 +1,189 @@
+[
+  {
+    "id": "fin-001",
+    "category": "financeiro",
+    "title": "Como emitir a segunda via do boleto?",
+    "tags": ["boleto", "pagamento", "mensalidade", "financeiro", "2 via"],
+    "steps": [
+      "Este FAQ oferece orientações, mas não emite boletos nem acessa sua situação financeira.",
+      "Para obter a segunda via, acesse o Portal Acadêmico ou procure o atendimento financeiro presencial."
+    ],
+    "important_note": "Boletos vencidos há mais de 30 dias devem ser renegociados presencialmente no CIA.",
+    "action_link": {
+      "text": "Acessar Portal do Aluno",
+      "url": "https://portal.unicatolica-to.edu.br"
+    }
+  },
+  {
+    "id": "fin-002",
+    "category": "financeiro",
+    "title": "Quais são as formas de pagamento aceitas?",
+    "tags": ["pagamento", "pix", "cartão", "boleto", "mensalidade"],
+    "steps": [
+      "A UniCatólica aceita pagamentos via Boleto Bancário e PIX.",
+      "Pagamentos via PIX são processados instantaneamente no sistema.",
+      "Para pagamento com cartão de crédito (renegociações), é necessário comparecer presencialmente ao CIA."
+    ]
+  },
+  {
+    "id": "acad-001",
+    "category": "academico",
+    "title": "Como solicitar uma declaração de matrícula?",
+    "tags": ["declaração", "matrícula", "comprovante", "atestado", "acadêmico"],
+    "steps": [
+      "Acesse a Secretaria Virtual no Portal Acadêmico UniCatólica.",
+      "Selecione a opção 'Emitir Documentos' no menu principal.",
+      "Clique em 'Declaração de Matrícula Simples'. O documento em PDF com validação digital via QR Code será gerado na hora."
+    ],
+    "important_note": "A declaração digital tem autenticidade garantida e dispensa carimbo ou assinatura presencial."
+  },
+  {
+    "id": "acad-002",
+    "category": "academico",
+    "title": "Onde consultar meu histórico escolar?",
+    "tags": ["histórico", "notas", "disciplinas", "acadêmico", "créditos"],
+    "steps": [
+      "Entre no Portal do Aluno com suas credenciais institucionais.",
+      "Clique no menu 'Vida Acadêmica' e selecione 'Histórico Escolar Completo'.",
+      "Visualize ou faça o download do documento."
+    ],
+    "important_note": "Históricos oficiais para transferência externa devem ser solicitados via requerimento.",
+    "action_link": {
+      "text": "Consultar Histórico",
+      "url": "https://portal.unicatolica-to.edu.br"
+    }
+  },
+  {
+    "id": "acad-003",
+    "category": "academico",
+    "title": "Como consultar minhas faltas e frequências?",
+    "tags": ["faltas", "frequência", "presença", "notas", "acadêmico"],
+    "steps": [
+      "Acesse o Portal do Aluno com suas credenciais.",
+      "Vá até o menu 'Vida Acadêmica' e clique na opção 'Frequência / Notas'.",
+      "Selecione a disciplina desejada para verificar o percentual de presenças e o limite permitido de faltas."
+    ]
+  },
+  {
+    "id": "acad-004",
+    "category": "academico",
+    "title": "Como fazer minha rematrícula?",
+    "tags": ["rematrícula", "renovação", "matrícula", "período", "acadêmico"],
+    "steps": [
+      "A rematrícula é feita online através do Portal do Aluno no período indicado no Calendário Acadêmico.",
+      "Verifique se você possui pendências financeiras ou na biblioteca que possam bloquear a renovação.",
+      "Acesse a opção 'Rematrícula', escolha as disciplinas da grade do semestre e confirme o pedido."
+    ]
+  },
+  {
+    "id": "acad-005",
+    "category": "academico",
+    "title": "Como iniciar o estágio obrigatório?",
+    "tags": ["estágio", "obrigatório", "coordenação", "contrato", "termo"],
+    "steps": [
+      "Consulte a matriz curricular do seu curso para confirmar se está no período estipulado para o estágio.",
+      "Retire o Termo de Compromisso de Estágio (TCE) com a Coordenação de Curso ou no setor de Estágios.",
+      "Entregue o documento devidamente assinado pela empresa concedente antes de iniciar as atividades."
+    ]
+  },
+  {
+    "id": "acad-006",
+    "category": "academico",
+    "title": "Como validar atividades complementares?",
+    "tags": ["atividades", "complementares", "certificados", "horas", "créditos"],
+    "steps": [
+      "Acesse o Portal do Aluno no menu 'Atividades Complementares'.",
+      "Cadastre o certificado obtido (cursos, eventos, semanas acadêmicas, monitorias ou trabalhos voluntários).",
+      "Anexe a cópia digitalizada do certificado em PDF para avaliação e validação da carga horária pela coordenação."
+    ]
+  },
+  {
+    "id": "acad-007",
+    "category": "academico",
+    "title": "Onde encontrar o calendário acadêmico?",
+    "tags": ["calendário", "prazos", "datas", "provas", "feriados", "acadêmico"],
+    "steps": [
+      "O calendário oficial está disponível no site institucional da UniCatólica na aba 'Vida Acadêmica'.",
+      "Você também pode baixá-lo diretamente pelo Portal do Aluno na seção de avisos e documentos institucionais."
+    ],
+    "action_link": {
+      "text": "Acessar Portal da UniCatólica",
+      "url": "https://unicatolica-to.edu.br"
+    }
+  },
+  {
+    "id": "acad-008",
+    "category": "academico",
+    "title": "Como funciona o regime de dependência (DP)?",
+    "tags": ["dp", "dependência", "reprovação", "disciplina"],
+    "steps": [
+      "Se você reprovou em uma disciplina, deverá cursá-la em regime de dependência.",
+      "As DPs podem ser ofertadas na modalidade presencial ou EAD, dependendo da matriz curricular.",
+      "A matrícula em DP é feita no período indicado no Calendário Acadêmico, através do Portal do Aluno."
+    ]
+  },
+  {
+    "id": "req-001",
+    "category": "requerimentos",
+    "title": "Como acompanhar uma solicitação ou requerimento?",
+    "tags": ["solicitação", "acompanhar", "requerimento", "status", "protocolo"],
+    "steps": [
+      "Acesse a aba 'Requerimentos' no seu Portal Acadêmico.",
+      "Clique em 'Acompanhar Requerimentos' para visualizar a lista de solicitações abertas.",
+      "Verifique o status do protocolo (Em análise, Deferido ou Indeferido) e as observações do setor responsável."
+    ]
+  },
+  {
+    "id": "req-002",
+    "category": "requerimentos",
+    "title": "Como tirar dúvidas sobre requerimentos?",
+    "tags": ["requerimento", "aproveitamento", "trancamento", "transferência"],
+    "steps": [
+      "Acesse a aba 'Requerimentos' no seu Portal Acadêmico.",
+      "Escolha o tipo de solicitação (Aproveitamento, Trancamento ou Transferência).",
+      "Preencha a justificativa, anexe os documentos comprobatórios e confirme o envio."
+    ],
+    "important_note": "Fique atento ao Calendário Acadêmico oficial para não perder os prazos regimentais."
+  },
+  {
+    "id": "req-003",
+    "category": "requerimentos",
+    "title": "Qual o prazo para análise de dispensa de disciplinas?",
+    "tags": ["dispensa", "aproveitamento", "prazo", "requerimento"],
+    "steps": [
+      "O prazo padrão para análise de requerimentos de aproveitamento de estudos é de até 15 dias úteis.",
+      "Acompanhe o status da sua solicitação diretamente na aba 'Requerimentos' do Portal do Aluno."
+    ]
+  },
+  {
+    "id": "bol-001",
+    "category": "bolsas",
+    "title": "Como saber mais sobre bolsas e benefícios?",
+    "tags": ["prouni", "fies", "bolsas", "desconto", "auxilio"],
+    "steps": [
+      "Consulte os editais vigentes no site da UniCatólica na seção 'Bolsas e Financiamentos'.",
+      "Verifique os prazos e submeta a documentação comprobatória na plataforma indicada."
+    ],
+    "important_note": "A renovação do ProUni e o aditamento do FIES exigem validação periódica junto à CPSA.",
+    "action_link": {
+      "text": "Ver Edital de Bolsas",
+      "url": "https://unicatolica-to.edu.br/bolsas"
+    }
+  },
+  {
+    "id": "cont-001",
+    "category": "academico",
+    "title": "Quais são os canais oficiais de atendimento?",
+    "tags": ["whatsapp", "atendimento", "telefone", "contato", "cia"],
+    "steps": [
+      "WhatsApp: (63) 99951-5979.",
+      "Atendimento Presencial: Câmpus II - Av. Teotônio Segurado, Quadra 1402 Sul, Palmas - TO.",
+      "Portal Institucional: unicatolica-to.edu.br."
+    ],
+    "important_note": "Para atendimento presencial, traga sempre um documento oficial com foto e seu RA.",
+    "action_link": {
+      "text": "Ir para Canais Oficiais",
+      "url": "#canais"
+    }
+  }
+]
