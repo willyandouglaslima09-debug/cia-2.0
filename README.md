@@ -16,7 +16,7 @@ O CIA 2.0 é um portal institucional de autoatendimento e FAQ acadêmico interat
 
 -Conformidade com a LGPD: Plataforma de autoatendimento estritamente anônima, sem armazenamento de dados pessoais, RA ou senhas.
 
- Tecnologias Utilizadas
+💻 Tecnologias Utilizadas
 
 HTML5 & CSS3 (Estruturação semântica e acessibilidade)
 
