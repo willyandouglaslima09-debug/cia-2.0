@@ -51,5 +51,4 @@ Instituição: Centro Universitário Católica do Tocantins (UniCatólica) — C
 Ano: 2026
 
 📄 Licença
-
 Este projeto é de uso educacional e institucional. Todos os direitos reservados ao Centro Universitário Católica do Tocantins.
