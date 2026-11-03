@@ -33,11 +33,16 @@ Fontshare / Clash Display (Tipografia institucional)
 📁 Estrutura do Projeto
 
 cia-2.0/
-├── index.html        # Estrutura principal do portal
+
+├── index.html             # Estrutura principal do portal
+
 ├── src/
-│   ├── app.js        # Lógica da aplicação, integração com Fuse.js e FAQs
-│   └── styles.css     # Estilos personalizados adicionais
-└── img/              # Ativos de imagem e elementos visuais
+
+│   ├── app.js              # Lógica da aplicação, integração com Fuse.js e FAQs
+
+│   └── styles.css           # Estilos personalizados adicionais
+
+└── img/                   # Ativos de imagem e elementos visuais
 
 
 👥 Equipe de Desenvolvimento
