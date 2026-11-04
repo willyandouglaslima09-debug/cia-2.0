@@ -41,11 +41,16 @@ Formspree API (xvkklanp): Serviço de backend serverless para recepção e organ
 📂 Estrutura do Repositório
 
 cia-2.0/
-├── index.html          # Estrutura principal da página e componentes (Header, Hero, FAQs, Modais, Footer)
+├── index.html# Estrutura principal da página e componentes (Header, Hero, FAQs, Modais, Footer)
+
 ├── src/
+
 │   ├── app.js          # Lógica JavaScript, dados dos FAQs, motor de busca e integrações API
+
 │   └── styles.css      # Estilizações complementares e animações de entrada
+
 ├── img/                # Ativos visuais e ilustrações do portal
+
 └── README.md           # Documentação oficial do projeto
 
 
