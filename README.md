@@ -1,59 +1,100 @@
-CIA 2.0 — Central de Informações Acadêmicas (UniCatólica)
+🎓 CIA 2.0 - Central de Informações Acadêmicas (FAQ UniCatólica)
 
-O CIA 2.0 é um portal institucional de autoatendimento e FAQ acadêmico interativo desenvolvido para o Centro Universitário Católica do Tocantins (UniCatólica). O objetivo principal do projeto é simplificar o acesso a informações essenciais sobre vida acadêmica, finanças, documentos e bolsas de estudo, promovendo maior autonomia aos estudantes e otimizando o fluxo de atendimento dos setores da instituição.
+MVP de Autoatendimento Acadêmico e Financeiro
 
- Funcionalidades Principais
+Projeto desenvolvido pela Equipe 404 — 2º Período do Curso de Engenharia de Software do Centro Universitário Católica do Tocantins (UniCatólica).
 
--Busca Inteligente com Busca Fuzzy (Fuse.js): Pesquisa rápida e tolerante a pequenos erros de digitação em todas as perguntas e respostas.
+📌 Sobre o Projeto
 
--Atalhos e Filtros Dinâmicos: Filtros por categorias (Acadêmico, Financeiro, Requerimentos, Bolsas e Benefícios) e atalhos rápidos para dúvidas frequentes.
+O CIA 2.0 é um Produto Mínimo Viável (MVP) concebido para atuar como um portal informativo dinâmico, centralizado e intuitivo. O objetivo principal é otimizar a jornada dos estudantes da UniCatólica na resolução de dúvidas frequentes sobre processos acadêmicos, financeiros, solicitações de documentos e programas de bolsas, reduzindo a necessidade de atendimento presencial no balcão da Central de Informações Acadêmicas (CIA).
 
--Acessibilidade por Navegação em Teclado: Suporte ao atalho global Ctrl + K para focar diretamente na barra de pesquisa.
+🚀 Principais Funcionalidades
 
--Design Moderno e Responsivo: Layout adaptável construído com Tailwind CSS e tipografia estilizada com Clash Display.
+Busca Tolerante a Falhas: Motor de pesquisa integrado via Fuse.js, permitindo encontrar respostas mesmo com pequenas variações de digitação.
 
--Formulário de Contato e Canais Oficiais: Direcionamento rápido para WhatsApp institucional, localização do Câmpus II e formulários de suporte por setor.
+Navegação por Categorias: Filtros dinâmicos por Acadêmico, Financeiro, Requerimentos e Bolsas e Benefícios.
 
--Conformidade com a LGPD: Plataforma de autoatendimento estritamente anônima, sem armazenamento de dados pessoais, RA ou senhas.
+Interface Responsiva & Acessível: Layout desenvolvido em Tailwind CSS, otimizado para dispositivos móveis com suporte a atalhos de teclado (Ctrl + K).
 
-💻 Tecnologias Utilizadas
+Votação por Pergunta (👍 / 👎): Mecanismo direto de avaliação da utilidade de cada resposta.
 
-HTML5 & CSS3 (Estruturação semântica e acessibilidade)
+Modal de Validação de MVP: Pop-up automatizado de pesquisa de satisfação para coleta de métricas de resolução, facilidade de uso e intenção de reutilização.
 
-Tailwind CSS (Estilização via CDN com suporte a temas e utilitários)
+Captura de Dados via Formspree: Telemetria anônima conectada a endpoint via API para consolidação de relatórios em tempo real.
 
-JavaScript (ES6+) (Lógica de interação e manipulação do DOM)
+Encaminhamento Direto de Suporte: Formulário que pré-preenche mensagens via protocolo mailto: para os e-mails institucionais dos setores responsáveis.
 
-Fuse.js (Mecanismo de busca fuzzy leve)
+🛠️ Tecnologias Utilizadas
 
-Lucide Icons (Conjunto moderno e leve de ícones)
+HTML5 & CSS3: Estruturação semântica e estilização customizada.
 
-Fontshare / Clash Display (Tipografia institucional)
+Tailwind CSS (CDN): Framework utilitário para design responsivo e componentes modernos.
 
-📁 Estrutura do Projeto
+JavaScript (ES6+): Lógica dinâmica, controle do acordeão, manipulação do DOM e eventos.
+
+Fuse.js (v6.6.2): Biblioteca de busca fuzzy client-side.
+
+Lucide Icons: Conjunto de ícones vetoriais leves e consistentes.
+
+Formspree API (xvkklanp): Serviço de backend serverless para recepção e organização das métricas de validação em planilhas (CSV/Excel).
+
+📂 Estrutura do Repositório
 
 cia-2.0/
-
-├── index.html             # Estrutura principal do portal
-
+├── index.html          # Estrutura principal da página e componentes (Header, Hero, FAQs, Modais, Footer)
 ├── src/
-
-│   ├── app.js              # Lógica da aplicação, integração com Fuse.js e FAQs
-
-│   └── styles.css           # Estilos personalizados adicionais
-
-└── img/                   # Ativos de imagem e elementos visuais
+│   ├── app.js          # Lógica JavaScript, dados dos FAQs, motor de busca e integrações API
+│   └── styles.css      # Estilizações complementares e animações de entrada
+├── img/                # Ativos visuais e ilustrações do portal
+└── README.md           # Documentação oficial do projeto
 
 
-👥 Equipe de Desenvolvimento
+📊 Estratégia de Validação do MVP
 
-Este projeto é um MVP (Produto Mínimo Viável) idealizado e desenvolvido durante o 2º Período do Curso de Engenharia de Software da UniCatólica.
+Conforme o plano de validação de campo no Câmpus II da UniCatólica, a ferramenta é disponibilizada via QR Code para estudantes na fila de atendimento presencial. As métricas coletadas incluem:
 
-Equipe: Equipe 404
+Taxa de Resolução: Medida pela votação direta nas respostas e confirmação no formulário modal.
 
-Instituição: Centro Universitário Católica do Tocantins (UniCatólica) — Câmpus II (Palmas - TO)
+Facilidade de Uso: Avaliação em escala de 1 a 5 estrelas reportada pelos usuários.
 
-Ano: 2026
+Intenção de Reutilização: Verificação da adesão do aluno à ferramenta antes de recorrer ao balcão físico.
 
-📄 Licença
-Este projeto é de uso educacional e institucional. Todos os direitos reservados ao Centro Universitário Católica do Tocantins.
+Todos os eventos de votação e submissões da pesquisa são transmitidos diretamente para o painel analítico do Formspree, viabilizando a exportação de dados estruturados para análise técnica.
+
+⚙️ Como Executar o Projeto Localmente
+
+Clonar o Repositório:
+
+git clone https://github.com/willyandouglaslima09-debug/cia-2.0.git
+
+
+Acessar o Diretório:
+
+cd cia-2.0
+
+
+Executar o Portal:
+
+Como o projeto é construído em arquitetura estrita de Front-End Client-Side, basta abrir o arquivo index.html em qualquer navegador web moderno.
+
+Recomendado utilizar a extensão Live Server no VS Code para recarregamento automático durante o desenvolvimento.
+
+👥 Equipe 404 (Engenharia de Software)
+
+Gabriel Oliveira Vidal
+
+João Vittor de Sousa Cortes
+
+Karen Lorena Kuhn Silva
+
+Pedro Henrique dos Santos Dultra
+
+Pedro Henrique Braga Oliveira
+
+Willian Douglas Lima Ribeiro Pugas
+
+📜 Licença e LGPD
+
+Este projeto é desenvolvido para fins acadêmicos. O portal opera em conformidade com a LGPD de forma anônima, sem solicitar ou armazenar senhas, RAs ou Informações Pessoais Identificáveis (PII).
+
+© 2026 Centro Universitário Católica do Tocantins (UniCatólica). Todos os direitos reservados.
