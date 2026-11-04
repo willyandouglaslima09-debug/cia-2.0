@@ -1,3 +1,5 @@
+// ENDPOINT DO FORMSPREE CONFIGURADO PARA A EQUIPE 404
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xvkklanp";
 
 let faqsData = [
   {
@@ -7,12 +9,12 @@ let faqsData = [
     "tags": ["boleto", "pagamento", "mensalidade", "financeiro", "2 via"],
     "steps": [
       "Este FAQ oferece orientações, mas não emite boletos nem acessa sua situação financeira.",
-      "Para obter a segunda via, acesse o Portal Acadêmico ou procure o atendimento financeiro presencial."
+      "Para obter a segunda via, acesse o Portal Acadêmico da UBEC no link abaixo ou procure o atendimento financeiro presencial."
     ],
     "important_note": "Boletos vencidos há mais de 30 dias devem ser renegociados presencialmente no CIA.",
     "action_link": {
       "text": "Acessar Portal do Aluno",
-      "url": "https://portal.unicatolica-to.edu.br"
+      "url": "https://portalacademico.ubec.edu.br/FrameHTML/Web/App/Edu/PortalEducacional/login/"
     }
   },
   {
@@ -51,7 +53,7 @@ let faqsData = [
     "important_note": "Históricos oficiais para transferência externa devem ser solicitados via requerimento.",
     "action_link": {
       "text": "Consultar Histórico",
-      "url": "https://portal.unicatolica-to.edu.br"
+      "url": "https://portalacademico.ubec.edu.br/FrameHTML/Web/App/Edu/PortalEducacional/login/"
     }
   },
   {
@@ -104,12 +106,12 @@ let faqsData = [
     "title": "Onde encontrar o calendário acadêmico?",
     "tags": ["calendário", "prazos", "datas", "provas", "feriados", "acadêmico"],
     "steps": [
-      "O calendário oficial está disponível no site institucional da UniCatólica na aba 'Vida Acadêmica'.",
-      "Você também pode baixá-lo diretamente pelo Portal do Aluno na seção de avisos e documentos institucionais."
+      "O calendário oficial está disponível para download público diretamente em formato PDF.",
+      "Você também pode baixá-lo pelo Portal do Aluno na seção de avisos e documentos institucionais."
     ],
     "action_link": {
-      "text": "Acessar Portal da UniCatólica",
-      "url": "https://unicatolica-to.edu.br"
+      "text": "Baixar Calendário Acadêmico (PDF)",
+      "url": "https://to.catolica.edu.br/portal/wp-content/uploads/2026/01/unicatolica-calendario-academico-2026-2-semestre-rev.pdf"
     }
   },
   {
@@ -162,13 +164,13 @@ let faqsData = [
     "title": "Como saber mais sobre bolsas e benefícios?",
     "tags": ["prouni", "fies", "bolsas", "desconto", "auxilio"],
     "steps": [
-      "Consulte os editais vigentes no site da UniCatólica na seção 'Bolsas e Financiamentos'.",
+      "Consulte as informações oficiais e editais de bolsas sociais no portal da UniCatólica.",
       "Verifique os prazos e submeta a documentação comprobatória na plataforma indicada."
     ],
     "important_note": "A renovação do ProUni e o aditamento do FIES exigem validação periódica junto à CPSA.",
     "action_link": {
-      "text": "Ver Edital de Bolsas",
-      "url": "https://unicatolica-to.edu.br/bolsas"
+      "text": "Ver Bolsas e Benefícios",
+      "url": "https://to.catolica.edu.br/portal/cursos/bolsas-financiamento-e-convenios/bolsa-social/"
     }
   },
   {
@@ -177,22 +179,20 @@ let faqsData = [
     "title": "Quais são os canais oficiais de atendimento?",
     "tags": ["whatsapp", "atendimento", "telefone", "contato", "cia"],
     "steps": [
-      "WhatsApp: (63) 99951-5979.",
+      "WhatsApp Oficial: (63) 3221-2100.",
       "Atendimento Presencial: Câmpus II - Av. Teotônio Segurado, Quadra 1402 Sul, Palmas - TO.",
-      "Portal Institucional: unicatolica-to.edu.br."
+      "Portal Institucional: to.catolica.edu.br/portal/estudante/"
     ],
     "important_note": "Para atendimento presencial, traga sempre um documento oficial com foto e seu RA.",
     "action_link": {
-      "text": "Ir para Canais Oficiais",
-      "url": "#canais"
+      "text": "Falar no WhatsApp",
+      "url": "https://api.whatsapp.com/send/?phone=556332212100&text&type=phone_number&app_absent=0"
     }
   }
 ];
 
 let fuseInstance = null;
 let activeFilter = 'all';
-
-// Elementos DOM
 let faqContainer;
 let emptyState;
 let searchInput;
@@ -201,7 +201,6 @@ let counterBadge;
 let resultsCount;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Captura dos elementos do DOM
   faqContainer = document.getElementById('faq-container');
   emptyState = document.getElementById('empty-state');
   searchInput = document.getElementById('search-input');
@@ -214,9 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   renderFaqs(faqsData);
   refreshIcons();
+  setupValidationModal();
 });
 
-// Animações no Scroll
 function initScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -225,14 +224,12 @@ function initScrollAnimations() {
       }
     });
   }, { threshold: 0.1 });
-
+  
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// Configuração da Busca com Fuse.js
 function initFuseSearch() {
   if (typeof Fuse === 'undefined') return;
-
   const options = {
     includeScore: true,
     threshold: 0.4,
@@ -247,7 +244,6 @@ function initFuseSearch() {
   fuseInstance = new Fuse(faqsData, options);
 }
 
-// Renderização dos FAQs com Mecanismo de Feedback
 function renderFaqs(items) {
   if (!faqContainer) return;
   faqContainer.innerHTML = '';
@@ -263,50 +259,44 @@ function renderFaqs(items) {
   if (counterBadge) counterBadge.textContent = `${items.length} ${items.length === 1 ? 'PERGUNTA' : 'PERGUNTAS'}`;
   if (resultsCount) resultsCount.textContent = `Exibindo ${items.length} de ${faqsData.length} perguntas`;
 
-  items.forEach((faq, index) => {
-    const isFirst = index === 0;
+  items.forEach((faq) => {
     const itemEl = document.createElement('div');
-    itemEl.className = `accordion-item py-4 border-b border-figma-cardLight/60 ${isFirst ? 'active' : ''}`;
+    itemEl.className = `accordion-item py-4 border-b border-figma-cardLight/60`;
     itemEl.dataset.id = faq.id;
 
     const savedVote = localStorage.getItem(`cia_feedback_${faq.id}`);
-    const stepsHtml = faq.steps.map(step => `<p class="text-sm text-figma-slate leading-relaxed">• ${step}</p>`).join('');
+    const stepsHtml = faq.steps.map(step => `<p class="text-base text-figma-slate leading-relaxed">• ${step}</p>`).join('');
 
     itemEl.innerHTML = `
-      <button class="accordion-header w-full text-left font-semibold text-figma-slate hover:text-figma-blue flex justify-between items-center transition-colors">
-        <h3 class="font-bold text-figma-slate text-base sm:text-lg">${faq.title}</h3>
-        <span class="accordion-icon text-2xl font-mono text-figma-blue font-bold ml-4">
-          ${isFirst ? '—' : '+'}
-        </span>
+      <button type="button" class="accordion-header w-full text-left font-semibold text-figma-slate hover:text-figma-blue flex justify-between items-center transition-colors cursor-pointer">
+        <h3 class="font-bold text-figma-slate text-lg sm:text-xl pointer-events-none">${faq.title}</h3>
+        <span class="accordion-icon text-2xl font-mono text-figma-blue font-bold ml-4 pointer-events-none">+</span>
       </button>
-
-      <div class="accordion-content">
+      
+      <div class="accordion-content hidden">
         <div class="pt-4 space-y-4 max-w-2xl">
           ${stepsHtml}
-
           ${faq.important_note ? `
-            <div class="p-3 bg-figma-cardLight/30 border-l-4 border-figma-blue text-xs text-figma-slate rounded-r">
+            <div class="p-3 bg-figma-cardLight/50 border-l-4 border-figma-blue text-sm text-figma-slate rounded-r">
               <strong>Atenção:</strong> ${faq.important_note}
             </div>
           ` : ''}
-
           <div class="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
             ${faq.action_link ? `
-              <a href="${faq.action_link.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 font-bold text-figma-blue hover:text-figma-slate transition-colors">
-                ${faq.action_link.text} <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              <a href="${faq.action_link.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 font-bold text-figma-blue hover:text-figma-slate transition-colors text-sm">
+                ${faq.action_link.text} <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
               </a>
             ` : '<div></div>'}
-
-            <!-- MECANISMO DE FEEDBACK INSTANTÂNEO -->
-            <div class="feedback-box flex items-center gap-2 text-[11px] text-figma-border">
+            
+            <div class="feedback-box flex items-center gap-2 text-xs text-figma-border">
               ${savedVote ? `
                 <span class="text-figma-blue font-semibold">Obrigado pelo seu feedback!</span>
               ` : `
                 <span>Esta resposta ajudou?</span>
-                <button class="feedback-btn px-2 py-1 rounded bg-figma-cardLight/40 hover:bg-figma-cardLight font-bold text-figma-slate transition-colors" data-vote="sim" data-id="${faq.id}">
+                <button type="button" class="feedback-btn px-2.5 py-1 rounded bg-figma-cardLight/60 hover:bg-figma-cardLight font-bold text-figma-slate transition-colors" data-vote="sim" data-id="${faq.id}">
                   👍 Sim
                 </button>
-                <button class="feedback-btn px-2 py-1 rounded bg-figma-cardLight/40 hover:bg-figma-cardLight font-bold text-figma-slate transition-colors" data-vote="nao" data-id="${faq.id}">
+                <button type="button" class="feedback-btn px-2.5 py-1 rounded bg-figma-cardLight/60 hover:bg-figma-cardLight font-bold text-figma-slate transition-colors" data-vote="nao" data-id="${faq.id}">
                   👎 Não
                 </button>
               `}
@@ -322,7 +312,6 @@ function renderFaqs(items) {
   refreshIcons();
 }
 
-// Filtragem Combinada (Pesquisa por Texto + Categoria)
 function filterFaqs() {
   const query = searchInput ? searchInput.value.trim() : '';
   let results = faqsData;
@@ -339,17 +328,35 @@ function filterFaqs() {
   renderFaqs(results);
 }
 
-// Configuração de Eventos
 function setupEventListeners() {
-  if (searchInput) {
-    searchInput.addEventListener('input', filterFaqs);
+  if (searchInput) searchInput.addEventListener('input', filterFaqs);
+  if (searchBtn) searchBtn.addEventListener('click', filterFaqs);
+
+  // Form de Envio por E-mail do Setor (registra no Formspree e abre mailto)
+  const supportForm = document.getElementById('support-email-form');
+  if (supportForm) {
+    supportForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const sectorEmail = document.getElementById('support-sector').value;
+      const message = document.getElementById('support-message').value;
+
+      if (!sectorEmail) {
+        alert('Por favor, selecione um setor.');
+        return;
+      }
+
+      sendDataToFormspree({
+        tipo: "Dúvida/Problema Enviado",
+        setor: sectorEmail,
+        mensagem: message
+      });
+
+      const subject = encodeURIComponent("Dúvida do Aluno - CIA 2.0");
+      const body = encodeURIComponent(message);
+      window.location.href = `mailto:${sectorEmail}?subject=${subject}&body=${body}`;
+    });
   }
 
-  if (searchBtn) {
-    searchBtn.addEventListener('click', filterFaqs);
-  }
-
-  // Atalho Ctrl / Cmd + K
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -357,43 +364,52 @@ function setupEventListeners() {
     }
   });
 
-  // Toggle do Acordeão e Feedback
   if (faqContainer) {
     faqContainer.addEventListener('click', (e) => {
       const header = e.target.closest('.accordion-header');
       if (header) {
+        e.preventDefault();
+        
         const item = header.closest('.accordion-item');
+        const content = item.querySelector('.accordion-content');
         const icon = header.querySelector('.accordion-icon');
-        const isOpen = item.classList.contains('active');
+        const isCurrentlyOpen = !content.classList.contains('hidden');
 
-        document.querySelectorAll('.accordion-item').forEach(i => {
-          i.classList.remove('active');
-          const ic = i.querySelector('.accordion-icon');
-          if (ic) ic.textContent = '+';
-        });
+        document.querySelectorAll('.accordion-content').forEach(c => c.classList.add('hidden'));
+        document.querySelectorAll('.accordion-icon').forEach(ic => ic.textContent = '+');
 
-        if (!isOpen) {
-          item.classList.add('active');
-          if (icon) icon.textContent = '—';
+        if (!isCurrentlyOpen) {
+          content.classList.remove('hidden');
+          icon.textContent = '—';
         }
         return;
       }
 
+      // CAPTURA DO VOTO INDIVIDUAL E ENVIO AO FORMSPREE
       const feedbackBtn = e.target.closest('.feedback-btn');
       if (feedbackBtn) {
         const faqId = feedbackBtn.dataset.id;
         const vote = feedbackBtn.dataset.vote;
         const box = feedbackBtn.closest('.feedback-box');
-
+        
         localStorage.setItem(`cia_feedback_${faqId}`, vote);
         if (box) {
           box.innerHTML = `<span class="text-figma-blue font-semibold">Obrigado pelo seu feedback!</span>`;
         }
+
+        sendDataToFormspree({
+          tipo: "Voto FAQ Individual",
+          faq_id: faqId,
+          voto: vote
+        });
+
+        setTimeout(() => {
+          openValidationModal();
+        }, 800);
       }
     });
   }
 
-  // Pills de Atalho no Hero
   document.querySelectorAll('.tag-pill').forEach(pill => {
     pill.addEventListener('click', () => {
       if (searchInput) {
@@ -405,7 +421,6 @@ function setupEventListeners() {
     });
   });
 
-  // Cards da Seção 01 (Categorias)
   document.querySelectorAll('.category-card').forEach(card => {
     card.addEventListener('click', () => {
       setActiveFilterTab(card.dataset.category);
@@ -414,12 +429,68 @@ function setupEventListeners() {
     });
   });
 
-  // Tabs da Sidebar
   document.querySelectorAll('.filter-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       setActiveFilterTab(tab.dataset.filter);
     });
   });
+}
+
+function setupValidationModal() {
+  const modal = document.getElementById('validation-modal');
+  const closeBtn = document.getElementById('close-modal-btn');
+  const form = document.getElementById('mvp-validation-form');
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+  }
+
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {
+        tipo: "Pesquisa Completa MVP",
+        resolveu_duvida: formData.get('resolveu'),
+        nota_facilidade: formData.get('facilidade'),
+        reutilizaria: formData.get('reutilizaria'),
+        comentario: formData.get('comentario')
+      };
+
+      sendDataToFormspree(data);
+
+      document.getElementById('mvp-validation-form').classList.add('hidden');
+      document.getElementById('modal-success-msg').classList.remove('hidden');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 2500);
+    });
+  }
+}
+
+function openValidationModal() {
+  const modal = document.getElementById('validation-modal');
+  const jaRespondeu = localStorage.getItem('cia_mvp_pesquisa_respondida');
+  
+  if (modal && !jaRespondeu) {
+    modal.classList.remove('hidden');
+    localStorage.setItem('cia_mvp_pesquisa_respondida', 'true');
+  }
+}
+
+// ENVIO DE DADOS PARA O SEU ENDPOINT DO FORMSPREE
+function sendDataToFormspree(payload) {
+  fetch(FORMSPREE_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  }).catch(err => console.log('Erro ao enviar métrica:', err));
 }
 
 function setActiveFilterTab(category) {

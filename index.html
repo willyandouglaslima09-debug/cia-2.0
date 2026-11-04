@@ -32,7 +32,6 @@
     }
   </script>
   
-  <!-- Estilos para forçar a exibição das animações -->
   <style>
     .reveal { 
       opacity: 1 !important; 
@@ -50,8 +49,8 @@
 <body class="bg-white text-slate-800 antialiased">
 
   <!-- BANNER DE LIMITAÇÃO DO MVP -->
-  <aside class="bg-figma-slate text-slate-100 text-[11px] py-1.5 px-4 text-center border-b border-figma-border/40 flex items-center justify-center gap-2">
-    <span class="inline-block px-1.5 py-0.5 rounded text-[9px] font-bold bg-figma-blue text-white uppercase">MVP CIA 2.0</span>
+  <aside class="bg-figma-slate text-slate-100 text-xs py-2 px-4 text-center border-b border-figma-border/40 flex items-center justify-center gap-2">
+    <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-figma-blue text-white uppercase">MVP CIA 2.0</span>
     <span>FAQ Informativo. Sem acesso a dados pessoais ou emissão direta de documentos.</span>
   </aside>
 
@@ -60,19 +59,19 @@
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <span class="font-extrabold text-2xl tracking-tight text-figma-slate">CIA 2.0</span>
-        <div class="hidden sm:block text-[11px] text-figma-border leading-tight">
+        <div class="hidden sm:block text-xs text-figma-border leading-tight">
           <strong>UniCatólica</strong><br>Central de Informações Acadêmicas
         </div>
       </div>
       
-      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-figma-slate">
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-figma-slate">
         <a href="#hero" class="hover:text-figma-blue transition-colors">Início</a>
         <a href="#faqs" class="text-figma-blue font-bold">Perguntas frequentes</a>
         <a href="#canais" class="hover:text-figma-blue transition-colors">Canais oficiais</a>
       </nav>
 
-      <a href="https://portal.unicatolica-to.edu.br" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-figma-slate text-white text-xs font-semibold hover:bg-figma-blue transition-colors">
-        UniCatólica <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+      <a href="https://to.catolica.edu.br/portal/estudante/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-figma-slate text-white text-xs font-semibold hover:bg-figma-blue transition-colors">
+        UniCatólica <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
       </a>
     </div>
   </header>
@@ -82,9 +81,8 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Esquerda: Busca Inteligente com Fuse.js -->
         <div class="lg:col-span-8 space-y-6 reveal">
-          <p class="text-[11px] font-bold tracking-wider text-figma-border uppercase">
+          <p class="text-xs font-bold tracking-wider text-figma-border uppercase">
             CENTRAL DE INFORMAÇÕES ACADÊMICAS / CIA 2.0
           </p>
           
@@ -92,7 +90,7 @@
             Sua vida acadêmica,<br>mais simples.
           </h1>
           
-          <p class="text-figma-slate text-sm sm:text-base max-w-xl leading-relaxed">
+          <p class="text-figma-slate text-base sm:text-lg max-w-xl leading-relaxed">
             Encontre orientações sobre matrículas, documentos e finanças.<br class="hidden sm:inline">
             Menos dúvidas. Mais tempo para o que importa.
           </p>
@@ -105,7 +103,7 @@
                 type="text" 
                 id="search-input" 
                 placeholder="Qual é a sua dúvida?" 
-                class="w-full pl-12 pr-32 py-4 bg-figma-cardLight/50 border-b-2 border-figma-border/50 focus:border-figma-blue text-figma-slate outline-none transition-colors"
+                class="w-full pl-12 pr-32 py-4 bg-figma-cardLight/50 border-b-2 border-figma-border/50 focus:border-figma-blue text-figma-slate text-base outline-none transition-colors"
               >
               <button 
                 id="search-btn"
@@ -114,20 +112,20 @@
                 Buscar <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </button>
             </div>
-            <div class="flex items-center justify-between text-[11px] text-figma-border mt-2 px-1">
-              <span>Atalho: <kbd class="px-1.5 py-0.5 bg-figma-cardLight border border-figma-border/40 rounded font-mono text-[10px] text-figma-slate">Ctrl + K</kbd></span>
+            <div class="flex items-center justify-between text-xs text-figma-border mt-2 px-1">
+              <span>Atalho: <kbd class="px-1.5 py-0.5 bg-figma-cardLight border border-figma-border/40 rounded font-mono text-xs text-figma-slate">Ctrl + K</kbd></span>
               <span id="results-count">Exibindo perguntas</span>
             </div>
           </div>
 
           <!-- Atalhos Rápidos -->
           <div class="pt-4 flex flex-wrap items-center gap-4 text-xs font-semibold">
-            <span class="text-[11px] font-bold text-figma-border uppercase tracking-wider">MAIS BUSCADOS</span>
+            <span class="text-xs font-bold text-figma-border uppercase tracking-wider">MAIS BUSCADOS</span>
             <button class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="boleto">
               Segunda via do boleto <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-figma-blue"></i>
             </button>
-            <button class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="declaração">
-              Declaração de matrícula <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-figma-blue"></i>
+            <button class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="calendário">
+              Calendário Acadêmico <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-figma-blue"></i>
             </button>
             <button class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="bolsa">
               Bolsas e benefícios <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-figma-blue"></i>
@@ -135,7 +133,6 @@
           </div>
         </div>
 
-        <!-- Direita: Ícone 3D -->
         <div class="lg:col-span-4 flex flex-col items-center justify-center text-center reveal delay-2">
           <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-full flex items-center justify-center relative select-none">
             <img 
@@ -144,14 +141,14 @@
               class="w-40 h-40 sm:w-48 sm:h-48 object-contain filter drop-shadow-2xl animate-pulse"
             >
           </div>
-          <p class="text-[11px] font-bold uppercase tracking-wider text-figma-border mt-4">
+          <p class="text-xs font-bold uppercase tracking-wider text-figma-border mt-4">
             UMA RESPOSTA PODE FACILITAR SEU DIA.
           </p>
         </div>
 
       </div>
 
-      <div class="mt-16 pt-6 border-t border-figma-cardLight/80 flex items-center justify-between text-[11px] font-bold text-figma-border uppercase">
+      <div class="mt-16 pt-6 border-t border-figma-cardLight/80 flex items-center justify-between text-xs font-bold text-figma-border uppercase">
         <span>INFORMAÇÃO CLARA. MAIS AUTONOMIA.</span>
         <a href="#categorias" class="flex items-center gap-1 text-figma-slate hover:text-figma-blue transition-colors">
           Explore por assunto <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
@@ -166,23 +163,22 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
         
         <div class="lg:col-span-5 space-y-6 reveal">
-          <p class="text-[11px] font-bold tracking-widest text-figma-cardLight uppercase">
+          <p class="text-xs font-bold tracking-widest text-figma-cardLight uppercase">
             01 / EXPLORE POR ASSUNTO
           </p>
           <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
             Por onde<br>vamos começar?
           </h2>
-          <p class="text-figma-cardLight text-sm max-w-sm">
+          <p class="text-figma-cardLight text-base max-w-sm">
             Encontre a informação certa por assunto.
           </p>
           
           <div class="pt-12 hidden lg:block space-y-1">
             <span class="text-7xl font-extrabold opacity-30 text-figma-cardLight">04</span>
-            <p class="text-[11px] font-bold tracking-wider text-figma-cardLight uppercase">ASSUNTOS PARA FACILITAR SUA JORNADA</p>
+            <p class="text-xs font-bold tracking-wider text-figma-cardLight uppercase">ASSUNTOS PARA FACILITAR SUA JORNADA</p>
           </div>
         </div>
 
-        <!-- 4 Cards de Categorias -->
         <div class="lg:col-span-7 space-y-3">
           
           <div 
@@ -190,10 +186,10 @@
             data-category="academico"
           >
             <div class="flex items-start gap-6">
-              <span class="text-sm font-mono font-bold text-figma-cardLight">01</span>
+              <span class="text-base font-mono font-bold text-figma-cardLight">01</span>
               <div>
                 <h3 class="font-bold text-xl text-white">Acadêmico</h3>
-                <p class="text-xs text-figma-cardLight mt-1">Matrícula, histórico e vida acadêmica.</p>
+                <p class="text-sm text-figma-cardLight mt-1">Matrícula, histórico e vida acadêmica.</p>
               </div>
             </div>
             <i data-lucide="arrow-up-right" class="w-6 h-6 text-white"></i>
@@ -204,10 +200,10 @@
             data-category="financeiro"
           >
             <div class="flex items-start gap-6">
-              <span class="text-sm font-mono font-bold text-figma-cardLight">02</span>
+              <span class="text-base font-mono font-bold text-figma-cardLight">02</span>
               <div>
                 <h3 class="font-bold text-xl text-white">Financeiro</h3>
-                <p class="text-xs text-figma-cardLight mt-1">Boletos, pagamentos e orientações.</p>
+                <p class="text-sm text-figma-cardLight mt-1">Boletos, pagamentos e orientações.</p>
               </div>
             </div>
             <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight"></i>
@@ -218,10 +214,10 @@
             data-category="requerimentos"
           >
             <div class="flex items-start gap-6">
-              <span class="text-sm font-mono font-bold text-figma-cardLight">03</span>
+              <span class="text-base font-mono font-bold text-figma-cardLight">03</span>
               <div>
                 <h3 class="font-bold text-xl text-white">Requerimentos</h3>
-                <p class="text-xs text-figma-cardLight mt-1">Declarações, documentos e solicitações.</p>
+                <p class="text-sm text-figma-cardLight mt-1">Declarações, documentos e solicitações.</p>
               </div>
             </div>
             <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight"></i>
@@ -232,10 +228,10 @@
             data-category="bolsas"
           >
             <div class="flex items-start gap-6">
-              <span class="text-sm font-mono font-bold text-figma-cardLight">04</span>
+              <span class="text-base font-mono font-bold text-figma-cardLight">04</span>
               <div>
                 <h3 class="font-bold text-xl text-white">Bolsas e benefícios</h3>
-                <p class="text-xs text-figma-cardLight mt-1">Programas, critérios e oportunidades.</p>
+                <p class="text-sm text-figma-cardLight mt-1">Programas, critérios e oportunidades.</p>
               </div>
             </div>
             <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight"></i>
@@ -254,17 +250,17 @@
         
         <!-- Sidebar -->
         <div class="lg:col-span-4 space-y-6 reveal">
-          <p class="text-[11px] font-bold tracking-widest text-figma-border uppercase">
+          <p class="text-xs font-bold tracking-widest text-figma-border uppercase">
             02 / ENCONTRE SUA RESPOSTA
           </p>
           <h2 class="text-4xl font-extrabold text-figma-slate tracking-tight">
             Dúvidas<br>frequentes.
           </h2>
-          <p class="text-figma-border text-sm">
+          <p class="text-figma-border text-base">
             As respostas que podem facilitar seu dia.
           </p>
 
-          <div class="space-y-3 pt-4 text-sm font-semibold">
+          <div class="space-y-3 pt-4 text-base font-semibold">
             <button class="filter-tab block w-full text-left text-figma-blue active" data-filter="all">
               Mais acessadas <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i>
             </button>
@@ -276,31 +272,28 @@
 
           <div class="p-6 bg-figma-cardLight border border-figma-cardLight rounded-lg space-y-4 mt-8 reveal delay-2">
             <h4 class="font-bold text-figma-slate text-base">Não encontrou o que precisava?</h4>
-            <a href="#canais" class="inline-flex items-center gap-2 text-xs font-bold text-figma-blue hover:text-figma-slate transition-colors">
+            <a href="#canais" class="inline-flex items-center gap-2 text-sm font-bold text-figma-blue hover:text-figma-slate transition-colors">
               Ver canais oficiais <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </a>
           </div>
         </div>
 
-        <!-- Lista de FAQs -->
+        <!-- Lista Dinâmica de FAQs enviadas do JS -->
         <div class="lg:col-span-8 reveal delay-1">
-          
           <div class="flex items-center justify-between pb-3 border-b border-figma-blue">
-            <span class="text-[11px] font-bold text-figma-blue uppercase tracking-wider">RESULTADOS</span>
-            <span id="faq-counter-badge" class="text-[11px] font-bold text-figma-border uppercase tracking-wider">PERGUNTAS</span>
+            <span class="text-xs font-bold text-figma-blue uppercase tracking-wider">RESULTADOS</span>
+            <span id="faq-counter-badge" class="text-xs font-bold text-figma-border uppercase tracking-wider">PERGUNTAS</span>
           </div>
 
-          <div id="faq-container" class="divide-y divide-figma-cardLight">
-            <!-- Injetado dinamicamente via JS -->
-          </div>
+          <!-- As respostas dinâmicas do faqsData são renderizadas diretamente aqui -->
+          <div id="faq-container" class="divide-y divide-figma-cardLight space-y-2 pt-2"></div>
 
           <div id="empty-state" class="hidden py-12 text-center space-y-4">
-            <p class="text-figma-border text-sm">Nenhuma pergunta encontrada para sua busca.</p>
-            <a href="https://wa.me/5563999515979" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 bg-figma-blue text-white rounded-md font-semibold hover:bg-figma-slate transition-colors">
+            <p class="text-figma-border text-base">Nenhuma pergunta encontrada para sua busca.</p>
+            <a href="https://api.whatsapp.com/send/?phone=556332212100&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 bg-figma-blue text-white rounded-md font-semibold hover:bg-figma-slate transition-colors text-sm">
               Falar no WhatsApp oficial <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </a>
           </div>
-
         </div>
 
       </div>
@@ -313,52 +306,45 @@
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div class="lg:col-span-6 space-y-4 reveal">
-          <p class="text-[11px] font-bold tracking-widest text-figma-cardLight uppercase">
+          <p class="text-xs font-bold tracking-widest text-figma-cardLight uppercase">
             03 / ESTAMOS POR AQUI
           </p>
           <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
             Conte com os<br>canais oficiais.
           </h2>
-          <p class="text-figma-cardLight text-sm max-w-sm">
+          <p class="text-figma-cardLight text-base max-w-sm">
             Para situações individuais, fale diretamente com a UniCatólica.
           </p>
         </div>
 
         <div class="lg:col-span-6 divide-y divide-white/20 reveal delay-1">
-          <a href="https://wa.me/5563999515979" target="_blank" rel="noopener" class="py-5 flex items-center justify-between group">
+          <!-- ATENDIMENTO DIGITAL COM WHATSAPP ATUALIZADO -->
+          <a href="https://api.whatsapp.com/send/?phone=556332212100&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="py-5 flex items-center justify-between group">
             <div>
               <h3 class="font-bold text-xl text-white group-hover:translate-x-1 transition-transform">Atendimento digital</h3>
-              <p class="text-xs text-figma-cardLight mt-1">Fale conosco pelo WhatsApp .</p>
+              <p class="text-sm text-figma-cardLight mt-1">Fale conosco pelo WhatsApp (63) 3221-2100.</p>
             </div>
             <i data-lucide="arrow-up-right" class="w-6 h-6 text-white group-hover:scale-110 transition-transform"></i>
           </a>
 
+          <!-- ATENDIMENTO PRESENCIAL -->
           <a href="https://www.google.com/maps/search/?api=1&query=UniCatólica+Palmas+Campus+II" target="_blank" rel="noopener" class="py-5 flex items-center justify-between group">
             <div>
               <h3 class="font-bold text-xl text-white group-hover:translate-x-1 transition-transform">Atendimento presencial</h3>
-              <p class="text-xs text-figma-cardLight mt-1">Câmpus II: Av. Teotônio Segurado, Quadra 1402 Sul.</p>
+              <p class="text-sm text-figma-cardLight mt-1">Câmpus II: Av. Teotônio Segurado, Quadra 1402 Sul.</p>
             </div>
             <i data-lucide="arrow-up-right" class="w-6 h-6 text-white group-hover:scale-110 transition-transform"></i>
           </a>
 
-          <a href="https://portal.unicatolica-to.edu.br" target="_blank" rel="noopener" class="py-5 flex items-center justify-between group">
+          <!-- PORTAL DA UNICATÓLICA -->
+          <a href="https://to.catolica.edu.br/portal/estudante/" target="_blank" rel="noopener" class="py-5 flex items-center justify-between group">
             <div>
               <h3 class="font-bold text-xl text-white group-hover:translate-x-1 transition-transform">Portal da UniCatólica</h3>
-              <p class="text-xs text-figma-cardLight mt-1">Acesse os serviços da instituição.</p>
+              <p class="text-sm text-figma-cardLight mt-1">Acesse os serviços da instituição.</p>
             </div>
             <i data-lucide="arrow-up-right" class="w-6 h-6 text-white group-hover:scale-110 transition-transform"></i>
           </a>
         </div>
-      </div>
-
-      <div class="p-6 bg-figma-cardLight text-figma-slate rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h4 class="font-bold text-base">Sua opinião ajuda a melhorar o CIA.</h4>
-          <p class="text-xs text-figma-border">Conte se você encontrou o que precisava e como foi sua experiência.</p>
-        </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSenyse-9hVMRAmnQAxX1d-Ut-wF301AK_mck7Ke_MD1vS5w2Q/viewform?usp=header" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 bg-figma-slate text-white rounded-md text-xs font-semibold hover:bg-figma-border transition-colors">
-          Avaliar experiência <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-        </a>
       </div>
 
     </div>
@@ -369,41 +355,45 @@
     <div class="max-w-5xl mx-auto px-6">
       <div class="bg-white border border-figma-cardLight rounded-xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center">
         
-        <!-- Lado Esquerdo: Textos e Ícone -->
         <div class="md:w-1/2 flex gap-4 items-start w-full">
           <div class="text-figma-blue mt-1">
             <i data-lucide="message-circle" class="w-8 h-8"></i>
           </div>
           <div>
             <h3 class="text-xl font-bold text-figma-slate mb-1">Não encontrou o que precisava?</h3>
-            <p class="text-sm text-figma-border">Conte pra gente qual é o seu problema. Nossa equipe está pronta para te ajudar!</p>
+            <p class="text-sm text-figma-border">Conte pra gente qual é o seu problema. Sua mensagem será enviada diretamente ao e-mail do setor escolhido!</p>
           </div>
         </div>
 
-        <!-- Linha divisória no meio -->
         <div class="hidden md:block w-px bg-gray-200 h-28"></div>
 
-        <!-- Lado Direito: Formulário -->
-        <div class="md:w-1/2 w-full space-y-3">
+        <form id="support-email-form" class="md:w-1/2 w-full space-y-3">
           <textarea 
+            id="support-message"
+            required
             placeholder="Descreva sua dúvida ou problema..." 
-            class="w-full text-sm border border-gray-300 rounded-md p-3 focus:outline-none focus:border-figma-blue focus:ring-1 focus:ring-figma-blue resize-none h-20 text-figma-slate placeholder-gray-400 transition-colors"
+            class="w-full text-base border border-gray-300 rounded-md p-3 focus:outline-none focus:border-figma-blue focus:ring-1 focus:ring-figma-blue resize-none h-24 text-figma-slate placeholder-gray-400 transition-colors"
           ></textarea>
           
           <div class="relative">
-            <select class="w-full text-sm border border-gray-300 rounded-md p-3 appearance-none focus:outline-none focus:border-figma-blue focus:ring-1 focus:ring-figma-blue text-gray-500 bg-white cursor-pointer transition-colors">
+            <select 
+              id="support-sector" 
+              required 
+              class="w-full text-base border border-gray-300 rounded-md p-3 appearance-none focus:outline-none focus:border-figma-blue focus:ring-1 focus:ring-figma-blue text-gray-700 bg-white cursor-pointer transition-colors"
+            >
               <option value="" disabled selected>Selecione o setor</option>
-              <option value="academico">Secretaria Acadêmica</option>
-              <option value="financeiro">Setor Financeiro</option>
-              <option value="ti">Suporte de TI</option>
+              <option value="secretaria@unicatolica-to.edu.br">Secretaria Acadêmica</option>
+              <option value="financeiro@unicatolica-to.edu.br">Setor Financeiro</option>
+              <option value="cpsa@unicatolica-to.edu.br">Bolsas & FIES / CPSA</option>
+              <option value="suporte@unicatolica-to.edu.br">Suporte de TI</option>
             </select>
-            <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3 top-3.5 text-gray-400 pointer-events-none"></i>
+            <i data-lucide="chevron-down" class="w-5 h-5 absolute right-3 top-3.5 text-gray-400 pointer-events-none"></i>
           </div>
 
-          <button class="w-full bg-figma-slate hover:bg-figma-blue text-white font-semibold text-sm py-3 rounded-md transition-colors flex items-center justify-center gap-2">
-            <i data-lucide="send" class="w-4 h-4"></i> Enviar solicitação
+          <button type="submit" class="w-full bg-figma-slate hover:bg-figma-blue text-white font-semibold text-sm py-3 rounded-md transition-colors flex items-center justify-center gap-2">
+            <i data-lucide="send" class="w-4 h-4"></i> Enviar por E-mail
           </button>
-        </div>
+        </form>
 
       </div>
     </div>
@@ -413,10 +403,8 @@
   <footer class="bg-figma-slate text-white py-14 border-t border-figma-border/30">
     <div class="max-w-7xl mx-auto px-6 space-y-10">
       
-      <!-- 3 Colunas Principais -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs leading-relaxed text-figma-cardLight">
         
-        <!-- Coluna 1: Endereço e E-mails dos Setores -->
         <div class="space-y-3">
           <h4 class="font-bold text-sm text-white font-sans">UniCatólica – Palmas (TO)</h4>
           <p>
@@ -424,18 +412,8 @@
             Câmpus II: Av. Teotônio Segurado, Quadra 1402 Sul.<br>
             Palmas - TO | CEP: 77019-900
           </p>
-
-          <!-- E-mails dos Setores -->
-          <div class="pt-2 border-t border-figma-border/40 space-y-1 text-[11px]">
-            <p class="font-semibold text-white uppercase tracking-wider mb-1.5">E-mails dos Setores:</p>
-            <p><strong class="text-white">Secretaria Acadêmica:</strong> <a href="mailto:secretaria@unicatolica-to.edu.br" class="hover:text-white underline transition-colors">secretaria@unicatolica-to.edu.br</a></p>
-            <p><strong class="text-white">Setor Financeiro:</strong> <a href="mailto:financeiro@unicatolica-to.edu.br" class="hover:text-white underline transition-colors">financeiro@unicatolica-to.edu.br</a></p>
-            <p><strong class="text-white">Bolsas & FIES / CPSA:</strong> <a href="mailto:cpsa@unicatolica-to.edu.br" class="hover:text-white underline transition-colors">cpsa@unicatolica-to.edu.br</a></p>
-            <p><strong class="text-white">Suporte de TI:</strong> <a href="mailto:suporte@unicatolica-to.edu.br" class="hover:text-white underline transition-colors">suporte@unicatolica-to.edu.br</a></p>
-          </div>
         </div>
 
-        <!-- Coluna 2: Privacidade & LGPD -->
         <div class="space-y-3">
           <h4 class="font-bold text-sm text-white font-sans">Privacidade & LGPD</h4>
           <p>
@@ -443,7 +421,6 @@
           </p>
         </div>
 
-        <!-- Coluna 3: Desenvolvimento -->
         <div class="space-y-3">
           <h4 class="font-bold text-sm text-white font-sans">Desenvolvimento</h4>
           <p>
@@ -455,20 +432,76 @@
 
       </div>
 
-      <!-- Linha Divisória com Cor de Borda da Paleta -->
       <div class="border-t border-figma-border/40"></div>
 
-      <!-- Rodapé Inferior: Copyright + Badge -->
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-figma-cardLight">
         <p>© 2026 Centro Universitário Católica do Tocantins (UniCatólica). Todos os direitos reservados.</p>
-        <span class="inline-flex items-center px-3 py-1 rounded bg-figma-border/30 border border-figma-border/50 text-[11px] font-mono text-white">
-          v1.0 - MVP Final
+        <span class="inline-flex items-center px-3 py-1 rounded bg-figma-border/30 border border-figma-border/50 text-xs font-mono text-white">
+          v2.0.4 - MVP Final
         </span>
       </div>
 
     </div>
   </footer>
 
-  <script src="src/app.js"></script>
+  <!-- MODAL / POP-UP DE VALIDAÇÃO DO MVP (FORMSPREE INTEGRAD0) -->
+  <div id="validation-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+    <div class="bg-white rounded-xl shadow-2xl border border-figma-cardLight max-w-md w-full p-6 space-y-5 relative">
+      <button id="close-modal-btn" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-xl">&times;</button>
+      
+      <div class="space-y-1">
+        <span class="text-[10px] font-bold tracking-widest text-figma-blue uppercase bg-figma-cardLight px-2 py-0.5 rounded">Validação MVP</span>
+        <h3 class="text-xl font-extrabold text-figma-slate">Sua opinião ajuda a melhorar o CIA!</h3>
+        <p class="text-xs text-figma-border">Responda em 15 segundos e ajude a Equipe 404 a aprimorar este portal.</p>
+      </div>
+
+      <form id="mvp-validation-form" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-figma-slate mb-1">1. Você conseguiu resolver sua dúvida aqui?</label>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="resolveu" value="Sim" required> Sim</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="resolveu" value="Parcialmente"> Parcialmente</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="resolveu" value="Nao"> Não</label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-figma-slate mb-1">2. De 1 a 5, quão fácil foi usar o site?</label>
+          <select name="facilidade" required class="w-full p-2 border border-gray-300 rounded bg-white text-figma-slate focus:outline-none focus:border-figma-blue">
+            <option value="" disabled selected>Selecione uma nota</option>
+            <option value="5">5 - Muito Fácil</option>
+            <option value="4">4 - Fácil</option>
+            <option value="3">3 - Neutro</option>
+            <option value="2">2 - Difícil</option>
+            <option value="1">1 - Muito Difícil</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-bold text-figma-slate mb-1">3. Usaria o site antes de ir ao balcão presencial?</label>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="reutilizaria" value="Com certeza" required> Com certeza</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="reutilizaria" value="Talvez"> Talvez</label>
+            <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="reutilizaria" value="Não"> Não</label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-figma-slate mb-1">Sugestão / Crítica (Opcional):</label>
+          <textarea name="comentario" rows="2" placeholder="O que podemos melhorar?" class="w-full p-2 border border-gray-300 rounded resize-none focus:outline-none focus:border-figma-blue"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-figma-blue hover:bg-figma-slate text-white font-bold py-2.5 rounded transition-colors text-xs shadow-md">
+          Enviar Feedback da Pesquisa
+        </button>
+      </form>
+      
+      <div id="modal-success-msg" class="hidden text-center py-4 text-emerald-600 font-bold text-sm">
+        🎉 Obrigado! Seus dados foram computados com sucesso!
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
