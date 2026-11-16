@@ -8,6 +8,9 @@ Projeto desenvolvido pela Equipe 404 — 2º Período do Curso de Engenharia de 
 
 O CIA 2.0 é um Produto Mínimo Viável (MVP) concebido para atuar como um portal informativo dinâmico, centralizado e intuitivo. O objetivo principal é otimizar a jornada dos estudantes da UniCatólica na resolução de dúvidas frequentes sobre processos acadêmicos, financeiros, solicitações de documentos e programas de bolsas, reduzindo a necessidade de atendimento presencial no balcão da Central de Informações Acadêmicas (CIA).
 
+Link para acesso do FAQ:
+https://cia-20.vercel.app/
+
 🚀 Principais Funcionalidades
 
 Busca Tolerante a Falhas: Motor de pesquisa integrado via Fuse.js, permitindo encontrar respostas mesmo com pequenas variações de digitação.
