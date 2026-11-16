@@ -1,19 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --figma-slate: #48545F;
-  --figma-blue: #4176B5;
-  --figma-border: #65717D;
-  --figma-card-light: #DFE1DE;
+  --figma-slate: #081C38;
+  --figma-blue: #0A3F7A;
+  --figma-border: #0B2A54;
+  --figma-card-light: #EAF0F8;
   --figma-white: #FFFFFF;
+  --font-scale: 1;
+}
+
+html {
+  font-size: calc(18px * var(--font-scale));
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: calc(16.5px * var(--font-scale));
+  }
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Clash Display', 'Inter', sans-serif;
   background-color: var(--figma-white);
   color: #1E252B;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* Link de pular para o conteúdo (visível no foco do teclado) */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  background-color: #081C38;
+  color: #FFFFFF;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 3px solid #FFD600;
+  outline-offset: 2px;
+}
+
+/* Indicador de foco visível para navegação por teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #0A3F7A;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.bg-figma-slate a:focus-visible,
+.bg-figma-slate button:focus-visible,
+footer a:focus-visible,
+aside a:focus-visible,
+aside button:focus-visible {
+  outline-color: #FFD600;
 }
 
 /* Animações no Scroll (Reveal) */
@@ -34,17 +90,25 @@ body {
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 
-/* Transição do Acordeão */
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
+/* Respeito à preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .reveal,
+  .hover-lift,
+  .accordion-content,
+  .animate-pulse {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
 
-.accordion-item.active .accordion-content {
-  max-height: 600px;
-  opacity: 1;
+/* Transição do Acordeão */
+.accordion-content {
+  transition: opacity 0.25s ease;
 }
 
 /* Efeito Elevação */
@@ -60,11 +124,13 @@ body {
 .filter-tab.active {
   color: var(--figma-blue);
   font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: var(--figma-card-light);
@@ -72,4 +138,122 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--figma-slate);
   border-radius: 4px;
+}
+
+/* =========================================================
+   MODO ALTO CONTRASTE (ACESSIBILIDADE)
+   ========================================================= */
+html.high-contrast,
+html.high-contrast body {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+html.high-contrast header,
+html.high-contrast section,
+html.high-contrast footer,
+html.high-contrast aside,
+html.high-contrast .bg-white,
+html.high-contrast .bg-white\/95,
+html.high-contrast .bg-gray-50,
+html.high-contrast .bg-figma-slate,
+html.high-contrast .bg-figma-cardLight,
+html.high-contrast .bg-figma-cardLight\/50,
+html.high-contrast .bg-figma-border\/40,
+html.high-contrast .bg-figma-border\/30 {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+html.high-contrast #accessibility-panel,
+html.high-contrast #mobile-nav {
+  background-color: #000000 !important;
+  border: 2px solid #FFFF00 !important;
+}
+
+html.high-contrast h1,
+html.high-contrast h2,
+html.high-contrast h3,
+html.high-contrast h4,
+html.high-contrast p,
+html.high-contrast span,
+html.high-contrast label,
+html.high-contrast li {
+  color: #FFFFFF !important;
+}
+
+html.high-contrast a,
+html.high-contrast .text-figma-blue,
+html.high-contrast .filter-tab.active,
+html.high-contrast .accordion-icon {
+  color: #FFFF00 !important;
+}
+
+html.high-contrast a:hover,
+html.high-contrast button:hover {
+  text-decoration: underline;
+}
+
+html.high-contrast button,
+html.high-contrast .category-card,
+html.high-contrast .bg-figma-blue,
+html.high-contrast input,
+html.high-contrast select,
+html.high-contrast textarea,
+html.high-contrast kbd {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+  border: 2px solid #FFFF00 !important;
+}
+
+html.high-contrast button.bg-figma-blue,
+html.high-contrast a.bg-figma-slate,
+html.high-contrast button[type="submit"],
+html.high-contrast #toggle-contrast[aria-pressed="true"] {
+  background-color: #FFFF00 !important;
+  color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  font-weight: 800 !important;
+}
+
+html.high-contrast button.bg-figma-blue *,
+html.high-contrast a.bg-figma-slate *,
+html.high-contrast button[type="submit"] *,
+html.high-contrast #toggle-contrast[aria-pressed="true"] * {
+  color: #000000 !important;
+}
+
+html.high-contrast .category-card {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+}
+
+html.high-contrast .category-card:hover,
+html.high-contrast .category-card:focus-visible {
+  background-color: #1A1A1A !important;
+  border-color: #FFFF00 !important;
+}
+
+html.high-contrast .accordion-item,
+html.high-contrast header,
+html.high-contrast section,
+html.high-contrast footer,
+html.high-contrast .border-figma-cardLight,
+html.high-contrast .border-figma-blue {
+  border-color: #FFFFFF !important;
+}
+
+html.high-contrast input::placeholder,
+html.high-contrast textarea::placeholder {
+  color: #CCCCCC !important;
+}
+
+html.high-contrast a:focus-visible,
+html.high-contrast button:focus-visible,
+html.high-contrast input:focus-visible,
+html.high-contrast select:focus-visible,
+html.high-contrast textarea:focus-visible,
+html.high-contrast [tabindex]:focus-visible {
+  outline: 3px solid #00E5FF !important;
+  outline-offset: 3px !important;
 }
