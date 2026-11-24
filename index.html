@@ -4,12 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Fontshare API para Clash Display -->
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
+  <title>CIA 2.1 - FAQ Acadêmico | UniCatólica</title>
   
-  <title>CIA 2.0 - FAQ Acadêmico | UniCatólica</title>
-  
-  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -17,10 +14,10 @@
         extend: {
           colors: {
             figma: {
-              slate: '#081C38',     /* Azul marinho escuro principal */
-              blue: '#0A3F7A',      /* Azul destaque para botões e links */
-              border: '#0B2A54',    /* Azul fechado para textos e bordas */
-              cardLight: '#EAF0F8', /* Azul super claro suave para cards */
+              slate: '#081C38',
+              blue: '#0A3F7A',
+              border: '#0B2A54',
+              cardLight: '#EAF0F8',
               white: '#FFFFFF'
             }
           },
@@ -32,142 +29,102 @@
     }
   </script>
   
-  <style>
-    .reveal { 
-      opacity: 1 !important; 
-      transform: none !important; 
-      visibility: visible !important; 
-    }
-  </style>
-
-  <link rel="stylesheet" href="style.css">
-  
-  <!-- Fuse.js e Lucide Icons -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-white text-slate-800 antialiased">
 
-  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
-
   <!-- BANNER DE LIMITAÇÃO DO MVP -->
-  <aside aria-label="Aviso de limitação do MVP" class="bg-figma-slate text-slate-100 text-sm py-2 px-4 text-center border-b border-figma-border/40 flex items-center justify-center gap-2">
-    <span class="inline-block px-2 py-0.5 rounded text-xs font-bold bg-figma-blue text-white uppercase">MVP CIA 2.0</span>
-    <span>FAQ Informativo. Sem acesso a dados pessoais ou emissão direta de documentos.</span>
+  <aside class="bg-figma-slate text-slate-100 text-xs py-2 px-4 text-center border-b border-figma-border/40 flex flex-wrap items-center justify-center gap-2">
+    <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-figma-blue text-white uppercase">CIA 2.1</span>
+    <span>FAQ Informativo & Assistente de Triagem. Sem acesso a dados pessoais ou emissão direta de documentos.</span>
   </aside>
 
   <!-- HEADER INSTITUCIONAL -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-figma-cardLight/80">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4 relative">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-figma-cardLight/80">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <span class="font-extrabold text-2xl tracking-tight text-figma-slate">CIA 2.0</span>
-        <div class="hidden sm:block text-sm text-figma-border leading-tight">
+        <span class="font-extrabold text-2xl tracking-tight text-figma-slate">CIA 2.1</span>
+        <div class="hidden sm:block text-xs text-figma-border leading-tight">
           <strong>UniCatólica</strong><br>Central de Informações Acadêmicas
         </div>
       </div>
       
-      <nav aria-label="Navegação principal" class="hidden md:flex items-center gap-8 text-base font-semibold text-figma-slate">
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-figma-slate">
         <a href="#hero" class="hover:text-figma-blue transition-colors">Início</a>
         <a href="#faqs" class="text-figma-blue font-bold">Perguntas frequentes</a>
-        <a href="#canais" class="hover:text-figma-blue transition-colors">Canais oficiais</a>
+        <a href="#assistente" class="hover:text-figma-blue transition-colors">Assistente de Atendimento</a>
+        <a href="dashboard.html" class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-figma-cardLight text-figma-blue hover:bg-figma-blue hover:text-white transition-colors text-xs font-bold">
+          <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i> Métricas MVP
+        </a>
       </nav>
 
-      <div class="flex items-center gap-2 sm:gap-3">
-        <button
-          type="button"
-          id="mobile-menu-btn"
-          aria-expanded="false"
-          aria-controls="mobile-nav"
-          aria-label="Abrir menu de navegação"
-          class="md:hidden inline-flex items-center justify-center p-2.5 rounded-md border border-figma-border/40 bg-white text-figma-slate hover:bg-figma-cardLight transition-colors"
-        >
-          <i data-lucide="menu" class="w-5 h-5" aria-hidden="true"></i>
-        </button>
-
-        <a href="https://to.catolica.edu.br/portal/estudante/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-figma-slate text-white text-sm font-semibold hover:bg-figma-blue transition-colors">
-          UniCatólica <i data-lucide="arrow-up-right" class="w-4 h-4" aria-hidden="true"></i>
-        </a>
-      </div>
+      <a href="https://to.catolica.edu.br/portal/estudante/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-figma-slate text-white text-xs font-semibold hover:bg-figma-blue transition-colors">
+        UniCatólica <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
     </div>
-
-    <!-- BARRA COMPACTA DE NAVEGAÇÃO (MOBILE) -->
-    <nav id="mobile-nav" aria-label="Navegação mobile" class="md:hidden hidden border-t border-figma-cardLight/80 bg-white/95 px-6 py-3">
-      <div class="flex flex-wrap items-center justify-around gap-3 text-sm font-semibold text-figma-slate">
-        <a href="#hero" class="mobile-nav-link px-2 py-1 hover:text-figma-blue transition-colors">Início</a>
-        <a href="#faqs" class="mobile-nav-link px-2 py-1 text-figma-blue font-bold">Perguntas frequentes</a>
-        <a href="#canais" class="mobile-nav-link px-2 py-1 hover:text-figma-blue transition-colors">Canais oficiais</a>
-      </div>
-    </nav>
   </header>
-
-  <main id="main-content" tabindex="-1">
 
   <!-- HERO SECTION -->
   <section id="hero" class="pt-12 pb-20 border-b border-figma-cardLight/80">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <div class="lg:col-span-8 space-y-6 reveal">
-          <p class="text-sm font-bold tracking-wider text-figma-border uppercase">
-            CENTRAL DE INFORMAÇÕES ACADÊMICAS / CIA 2.0
+        <div class="lg:col-span-8 space-y-6">
+          <p class="text-xs font-bold tracking-wider text-figma-border uppercase">
+            CENTRAL DE INFORMAÇÕES ACADÊMICAS / CIA 2.1
           </p>
           
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-figma-slate tracking-tight leading-[1.1]">
             Sua vida acadêmica,<br>mais simples.
           </h1>
           
-          <p class="text-figma-slate text-lg sm:text-xl max-w-xl leading-relaxed">
+          <p class="text-figma-slate text-base sm:text-lg max-w-xl leading-relaxed">
             Encontre orientações sobre matrículas, documentos e finanças.<br class="hidden sm:inline">
             Menos dúvidas. Mais tempo para o que importa.
           </p>
 
           <!-- Input de Pesquisa -->
           <div class="pt-4 max-w-2xl">
-            <label for="search-input" class="sr-only">Buscar perguntas frequentes</label>
             <div class="relative flex items-center shadow-sm">
-              <i data-lucide="search" class="absolute left-4 w-5 h-5 text-figma-slate opacity-70 pointer-events-none" aria-hidden="true"></i>
+              <i data-lucide="search" class="absolute left-4 w-5 h-5 text-figma-slate opacity-70 pointer-events-none"></i>
               <input 
-                type="search" 
+                type="text" 
                 id="search-input" 
                 placeholder="Qual é a sua dúvida?" 
-                class="w-full pl-12 pr-36 py-4 bg-figma-cardLight/50 border-b-2 border-figma-border/50 focus:border-figma-blue text-figma-slate text-lg transition-colors"
+                class="w-full pl-12 pr-32 py-4 bg-figma-cardLight/50 border-b-2 border-figma-border/50 focus:border-figma-blue text-figma-slate text-base outline-none transition-colors"
               >
               <button 
-                type="button"
                 id="search-btn"
-                class="absolute right-2 px-6 py-2.5 bg-figma-blue hover:bg-figma-slate text-white rounded-md text-sm font-semibold flex items-center gap-2 transition-colors"
+                class="absolute right-2 px-6 py-2.5 bg-figma-blue hover:bg-figma-slate text-white rounded-md text-xs font-semibold flex items-center gap-2 transition-colors"
               >
-                Buscar <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                Buscar <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </button>
             </div>
-            <div class="flex items-center justify-between text-sm text-figma-border mt-2 px-1">
-              <span>Atalho: <kbd class="px-1.5 py-0.5 bg-figma-cardLight border border-figma-border/40 rounded font-mono text-xs text-figma-slate">Ctrl + K</kbd> ou <kbd class="px-1.5 py-0.5 bg-figma-cardLight border border-figma-border/40 rounded font-mono text-xs text-figma-slate">/</kbd></span>
-              <span id="results-count" aria-live="polite">Exibindo perguntas</span>
+            <div class="flex items-center justify-between text-xs text-figma-border mt-2 px-1">
+              <span>Atalho: <kbd class="px-1.5 py-0.5 bg-figma-cardLight border border-figma-border/40 rounded font-mono text-xs text-figma-slate">Ctrl + K</kbd></span>
+              <span id="results-count">Exibindo perguntas</span>
             </div>
           </div>
 
           <!-- Atalhos Rápidos -->
-          <div class="pt-4 flex flex-wrap items-center gap-4 text-sm font-semibold">
+          <div class="pt-4 flex flex-wrap items-center gap-4 text-xs font-semibold">
             <span class="text-xs font-bold text-figma-border uppercase tracking-wider">MAIS BUSCADOS</span>
-            <button type="button" class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="boleto">
-              Segunda via do boleto <i data-lucide="arrow-up-right" class="w-4 h-4 text-figma-blue" aria-hidden="true"></i>
+            <button class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="boleto">
+              Segunda via do boleto <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-figma-blue"></i>
             </button>
-            <button type="button" class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="calendário">
-              Calendário Acadêmico <i data-lucide="arrow-up-right" class="w-4 h-4 text-figma-blue" aria-hidden="true"></i>
+            <button class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="calendário">
+              Calendário Acadêmico <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-figma-blue"></i>
             </button>
-            <button type="button" class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="bolsa">
-              Bolsas e benefícios <i data-lucide="arrow-up-right" class="w-4 h-4 text-figma-blue" aria-hidden="true"></i>
+            <button class="tag-pill text-figma-slate hover:text-figma-blue flex items-center gap-1 transition-colors" data-tag="bolsa">
+              Bolsas e benefícios <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-figma-blue"></i>
             </button>
           </div>
         </div>
 
-        <div class="lg:col-span-4 flex flex-col items-center justify-center text-center reveal delay-2">
-          <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-full flex items-center justify-center relative select-none">
-            <img 
-              src="img/Captura_de_tela_2026-11-03_102359-removebg-preview.png" 
-              alt="Ponto de interrogação 3D" 
-              class="w-40 h-40 sm:w-48 sm:h-48 object-contain filter drop-shadow-2xl animate-pulse"
-            >
+        <div class="lg:col-span-4 flex flex-col items-center justify-center text-center">
+          <div class="w-56 h-56 sm:w-64 sm:h-64 rounded-full bg-figma-cardLight/60 flex items-center justify-center relative select-none shadow-inner">
+            <span class="text-8xl font-extrabold text-figma-blue">?</span>
           </div>
           <p class="text-xs font-bold uppercase tracking-wider text-figma-border mt-4">
             UMA RESPOSTA PODE FACILITAR SEU DIA.
@@ -175,335 +132,249 @@
         </div>
 
       </div>
-
-      <div class="mt-16 pt-6 border-t border-figma-cardLight/80 flex items-center justify-between text-xs font-bold text-figma-border uppercase">
-        <span>INFORMAÇÃO CLARA. MAIS AUTONOMIA.</span>
-        <a href="#categorias" class="flex items-center gap-1 text-figma-slate hover:text-figma-blue transition-colors">
-          Explore por assunto <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
-        </a>
-      </div>
     </div>
   </section>
 
   <!-- SEÇÃO 01 / EXPLORE POR ASSUNTO -->
-  <section id="categorias" aria-labelledby="categorias-heading" class="py-20 bg-figma-slate text-white">
+  <section id="categorias" class="py-20 bg-figma-slate text-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        <div class="lg:col-span-5 space-y-6 reveal">
-          <p class="text-sm font-bold tracking-widest text-figma-cardLight uppercase">
-            01 / EXPLORE POR ASSUNTO
-          </p>
-          <h2 id="categorias-heading" class="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Por onde<br>vamos começar?
-          </h2>
-          <p class="text-figma-cardLight text-lg max-w-sm">
-            Encontre a informação certa por assunto.
-          </p>
-          
+        <div class="lg:col-span-5 space-y-6">
+          <p class="text-xs font-bold tracking-widest text-figma-cardLight uppercase">01 / EXPLORE POR ASSUNTO</p>
+          <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Por onde<br>vamos começar?</h2>
+          <p class="text-figma-cardLight text-base max-w-sm">Encontre a informação certa por assunto.</p>
           <div class="pt-12 hidden lg:block space-y-1">
-            <span class="text-7xl font-extrabold opacity-30 text-figma-cardLight" aria-hidden="true">04</span>
-            <p class="text-sm font-bold tracking-wider text-figma-cardLight uppercase">ASSUNTOS PARA FACILITAR SUA JORNADA</p>
+            <span class="text-7xl font-extrabold opacity-30 text-figma-cardLight">04</span>
+            <p class="text-xs font-bold tracking-wider text-figma-cardLight uppercase">ASSUNTOS PARA FACILITAR SUA JORNADA</p>
           </div>
         </div>
 
         <div class="lg:col-span-7 space-y-3">
-          
-          <button 
-            type="button"
-            class="category-card w-full text-left p-6 rounded-lg bg-figma-blue hover:bg-figma-border transition-all duration-300 cursor-pointer flex items-center justify-between"
-            data-category="academico"
-          >
+          <div class="category-card p-6 rounded-lg bg-figma-blue hover:bg-figma-border transition-all cursor-pointer flex items-center justify-between" data-category="academico">
             <div class="flex items-start gap-6">
-              <span class="text-lg font-mono font-bold text-figma-cardLight" aria-hidden="true">01</span>
+              <span class="text-base font-mono font-bold text-figma-cardLight">01</span>
               <div>
-                <h3 class="font-bold text-2xl text-white">Acadêmico</h3>
-                <p class="text-base text-figma-cardLight mt-1">Matrícula, histórico e vida acadêmica.</p>
+                <h3 class="font-bold text-xl text-white">Acadêmico</h3>
+                <p class="text-sm text-figma-cardLight mt-1">Matrícula, histórico e vida acadêmica.</p>
               </div>
             </div>
-            <i data-lucide="arrow-up-right" class="w-6 h-6 text-white shrink-0" aria-hidden="true"></i>
-          </button>
+            <i data-lucide="arrow-up-right" class="w-6 h-6 text-white"></i>
+          </div>
 
-          <button 
-            type="button"
-            class="category-card w-full text-left p-6 rounded-lg bg-figma-border/40 hover:bg-figma-blue border border-figma-border/50 transition-all cursor-pointer flex items-center justify-between"
-            data-category="financeiro"
-          >
+          <div class="category-card p-6 rounded-lg bg-figma-border/40 hover:bg-figma-blue border border-figma-border/50 transition-all cursor-pointer flex items-center justify-between" data-category="financeiro">
             <div class="flex items-start gap-6">
-              <span class="text-lg font-mono font-bold text-figma-cardLight" aria-hidden="true">02</span>
+              <span class="text-base font-mono font-bold text-figma-cardLight">02</span>
               <div>
-                <h3 class="font-bold text-2xl text-white">Financeiro</h3>
-                <p class="text-base text-figma-cardLight mt-1">Boletos, pagamentos e orientações.</p>
+                <h3 class="font-bold text-xl text-white">Financeiro</h3>
+                <p class="text-sm text-figma-cardLight mt-1">Boletos, pagamentos e orientações.</p>
               </div>
             </div>
-            <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight shrink-0" aria-hidden="true"></i>
-          </button>
+            <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight"></i>
+          </div>
 
-          <button 
-            type="button"
-            class="category-card w-full text-left p-6 rounded-lg bg-figma-border/40 hover:bg-figma-blue border border-figma-border/50 transition-all cursor-pointer flex items-center justify-between"
-            data-category="requerimentos"
-          >
+          <div class="category-card p-6 rounded-lg bg-figma-border/40 hover:bg-figma-blue border border-figma-border/50 transition-all cursor-pointer flex items-center justify-between" data-category="requerimentos">
             <div class="flex items-start gap-6">
-              <span class="text-lg font-mono font-bold text-figma-cardLight" aria-hidden="true">03</span>
+              <span class="text-base font-mono font-bold text-figma-cardLight">03</span>
               <div>
-                <h3 class="font-bold text-2xl text-white">Requerimentos</h3>
-                <p class="text-base text-figma-cardLight mt-1">Declarações, documentos e solicitações.</p>
+                <h3 class="font-bold text-xl text-white">Requerimentos</h3>
+                <p class="text-sm text-figma-cardLight mt-1">Declarações, documentos e solicitações.</p>
               </div>
             </div>
-            <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight shrink-0" aria-hidden="true"></i>
-          </button>
+            <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight"></i>
+          </div>
 
-          <button 
-            type="button"
-            class="category-card w-full text-left p-6 rounded-lg bg-figma-border/40 hover:bg-figma-blue border border-figma-border/50 transition-all cursor-pointer flex items-center justify-between"
-            data-category="bolsas"
-          >
+          <div class="category-card p-6 rounded-lg bg-figma-border/40 hover:bg-figma-blue border border-figma-border/50 transition-all cursor-pointer flex items-center justify-between" data-category="bolsas">
             <div class="flex items-start gap-6">
-              <span class="text-lg font-mono font-bold text-figma-cardLight" aria-hidden="true">04</span>
+              <span class="text-base font-mono font-bold text-figma-cardLight">04</span>
               <div>
-                <h3 class="font-bold text-2xl text-white">Bolsas e benefícios</h3>
-                <p class="text-base text-figma-cardLight mt-1">Programas, critérios e oportunidades.</p>
+                <h3 class="font-bold text-xl text-white">Bolsas e benefícios</h3>
+                <p class="text-sm text-figma-cardLight mt-1">Programas, critérios e oportunidades.</p>
               </div>
             </div>
-            <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight shrink-0" aria-hidden="true"></i>
-          </button>
-
+            <i data-lucide="arrow-up-right" class="w-6 h-6 text-figma-cardLight"></i>
+          </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- SEÇÃO 02 / DÚVIDAS FREQUENTES -->
-  <section id="faqs" aria-labelledby="faqs-heading" class="py-20 bg-white">
+  <section id="faqs" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        <!-- Sidebar -->
-        <div class="lg:col-span-4 space-y-6 reveal">
-          <p class="text-sm font-bold tracking-widest text-figma-border uppercase">
-            02 / ENCONTRE SUA RESPOSTA
-          </p>
-          <h2 id="faqs-heading" class="text-4xl sm:text-5xl font-extrabold text-figma-slate tracking-tight">
-            Dúvidas<br>frequentes.
-          </h2>
-          <p class="text-figma-border text-lg">
-            As respostas que podem facilitar seu dia.
-          </p>
+        <div class="lg:col-span-4 space-y-6">
+          <p class="text-xs font-bold tracking-widest text-figma-border uppercase">02 / ENCONTRE SUA RESPOSTA</p>
+          <h2 class="text-4xl font-extrabold text-figma-slate tracking-tight">Dúvidas<br>frequentes.</h2>
+          <p class="text-figma-border text-base">As respostas que podem facilitar seu dia.</p>
 
-          <div class="space-y-3 pt-4 text-lg font-semibold" role="group" aria-label="Filtrar perguntas por categoria">
-            <button type="button" class="filter-tab block w-full text-left text-figma-blue active py-1" data-filter="all" aria-pressed="true">
-              Mais acessadas <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1" aria-hidden="true"></i>
+          <div class="space-y-3 pt-4 text-base font-semibold">
+            <button class="filter-tab block w-full text-left text-figma-blue active" data-filter="all">
+              Mais acessadas <i data-lucide="arrow-right" class="inline w-4 h-4 ml-1"></i>
             </button>
-            <button type="button" class="filter-tab block w-full text-left text-figma-border hover:text-figma-slate transition-colors py-1" data-filter="academico" aria-pressed="false">Acadêmico</button>
-            <button type="button" class="filter-tab block w-full text-left text-figma-border hover:text-figma-slate transition-colors py-1" data-filter="financeiro" aria-pressed="false">Financeiro</button>
-            <button type="button" class="filter-tab block w-full text-left text-figma-border hover:text-figma-slate transition-colors py-1" data-filter="requerimentos" aria-pressed="false">Requerimentos</button>
-            <button type="button" class="filter-tab block w-full text-left text-figma-border hover:text-figma-slate transition-colors py-1" data-filter="bolsas" aria-pressed="false">Bolsas e benefícios</button>
-          </div>
-
-          <div class="p-6 bg-figma-cardLight border border-figma-cardLight rounded-lg space-y-4 mt-8 reveal delay-2">
-            <h3 class="font-bold text-figma-slate text-lg">Não encontrou o que precisava?</h3>
-            <a href="#canais" class="inline-flex items-center gap-2 text-base font-bold text-figma-blue hover:text-figma-slate transition-colors">
-              Ver canais oficiais <i data-lucide="arrow-up-right" class="w-4 h-4" aria-hidden="true"></i>
-            </a>
+            <button class="filter-tab block w-full text-left text-figma-border hover:text-figma-slate transition-colors" data-filter="academico">Acadêmico</button>
+            <button class="filter-tab block w-full text-left text-figma-border hover:text-figma-slate transition-colors" data-filter="financeiro">Financeiro</button>
+            <button class="filter-tab block w-full text-left text-figma-border hover:text-figma-slate transition-colors" data-filter="requerimentos">Requerimentos</button>
+            <button class="filter-tab block w-full text-left text-figma-border hover:text-figma-slate transition-colors" data-filter="bolsas">Bolsas e benefícios</button>
           </div>
         </div>
 
-        <!-- Lista Dinâmica de FAQs enviadas do JS -->
-        <div class="lg:col-span-8 reveal delay-1">
+        <div class="lg:col-span-8">
           <div class="flex items-center justify-between pb-3 border-b border-figma-blue">
-            <span class="text-sm font-bold text-figma-blue uppercase tracking-wider">RESULTADOS</span>
-            <span id="faq-counter-badge" aria-live="polite" class="text-sm font-bold text-figma-border uppercase tracking-wider">PERGUNTAS</span>
+            <span class="text-xs font-bold text-figma-blue uppercase tracking-wider">RESULTADOS</span>
+            <span id="faq-counter-badge" class="text-xs font-bold text-figma-border uppercase tracking-wider">PERGUNTAS</span>
           </div>
 
-          <!-- As respostas dinâmicas do faqsData são renderizadas diretamente aqui -->
           <div id="faq-container" class="divide-y divide-figma-cardLight space-y-2 pt-2"></div>
 
           <div id="empty-state" class="hidden py-12 text-center space-y-4">
             <p class="text-figma-border text-base">Nenhuma pergunta encontrada para sua busca.</p>
-            <a href="https://api.whatsapp.com/send/?phone=556332212100&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 bg-figma-blue text-white rounded-md font-semibold hover:bg-figma-slate transition-colors text-sm">
-              Falar no WhatsApp oficial <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            <a href="#assistente" class="inline-flex items-center gap-2 px-5 py-2.5 bg-figma-blue text-white rounded-md font-semibold hover:bg-figma-slate transition-colors text-sm">
+              Usar Assistente de Atendimento <i data-lucide="arrow-down" class="w-4 h-4"></i>
             </a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- SEÇÃO 03 / CANAIS OFICIAIS -->
-  <section id="canais" aria-labelledby="canais-heading" class="py-20 bg-figma-slate text-white">
-    <div class="max-w-7xl mx-auto px-6 space-y-12">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-6 space-y-4 reveal">
-          <p class="text-sm font-bold tracking-widest text-figma-cardLight uppercase">
-            03 / ESTAMOS POR AQUI
-          </p>
-          <h2 id="canais-heading" class="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Conte com os<br>canais oficiais.
-          </h2>
-          <p class="text-figma-cardLight text-lg max-w-sm">
-            Para situações individuais, fale diretamente com a UniCatólica.
-          </p>
-        </div>
-
-        <div class="lg:col-span-6 divide-y divide-white/20 reveal delay-1">
-          <!-- ATENDIMENTO DIGITAL COM WHATSAPP ATUALIZADO -->
-          <a href="https://api.whatsapp.com/send/?phone=556332212100&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="py-5 flex items-center justify-between group">
-            <div>
-              <h3 class="font-bold text-2xl text-white group-hover:translate-x-1 transition-transform">Atendimento digital</h3>
-              <p class="text-base text-figma-cardLight mt-1">Fale conosco pelo WhatsApp (63) 3221-2100.</p>
-            </div>
-            <i data-lucide="arrow-up-right" class="w-6 h-6 text-white group-hover:scale-110 transition-transform shrink-0" aria-hidden="true"></i>
-          </a>
-
-          <!-- ATENDIMENTO PRESENCIAL -->
-          <a href="https://maps.app.goo.gl/CfeZmhZETSfGZpNXA" target="_blank" rel="noopener" class="py-5 flex items-center justify-between group">
-            <div>
-              <h3 class="font-bold text-2xl text-white group-hover:translate-x-1 transition-transform">Atendimento presencial</h3>
-              <p class="text-base text-figma-cardLight mt-1">Câmpus I: Av. Teotônio Segurado, Quadra 1402 Sul.</p>
-            </div>
-            <i data-lucide="arrow-up-right" class="w-6 h-6 text-white group-hover:scale-110 transition-transform shrink-0" aria-hidden="true"></i>
-          </a>
-
-          <!-- PORTAL DA UNICATÓLICA -->
-          <a href="https://to.catolica.edu.br/portal/estudante/" target="_blank" rel="noopener" class="py-5 flex items-center justify-between group">
-            <div>
-              <h3 class="font-bold text-2xl text-white group-hover:translate-x-1 transition-transform">Portal da UniCatólica</h3>
-              <p class="text-base text-figma-cardLight mt-1">Acesse os serviços da instituição.</p>
-            </div>
-            <i data-lucide="arrow-up-right" class="w-6 h-6 text-white group-hover:scale-110 transition-transform shrink-0" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SEÇÃO DE CONTATO / FORMULÁRIO DE SUPORTE -->
-  <section aria-labelledby="suporte-heading" class="py-12 bg-gray-50 border-t border-figma-cardLight/50">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="bg-white border border-figma-cardLight rounded-xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center">
+  <!-- NOVA SEÇÃO: ASSISTENTE DE FORMATAÇÃO DE ATENDIMENTO (CIA 2.1) -->
+  <section id="assistente" class="py-16 bg-slate-50 border-t border-figma-cardLight">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="bg-figma-cardLight/40 border border-figma-border/20 rounded-2xl p-6 md:p-10 shadow-sm">
         
-        <div class="md:w-1/2 flex gap-4 items-start w-full">
-          <div class="text-figma-blue mt-1">
-            <i data-lucide="message-circle" class="w-8 h-8" aria-hidden="true"></i>
-          </div>
-          <div>
-            <h2 id="suporte-heading" class="text-2xl font-bold text-figma-slate mb-1">Não encontrou o que precisava?</h2>
-            <p class="text-base text-figma-border">Conte pra gente qual é o seu problema. Sua mensagem será enviada diretamente ao e-mail do setor escolhido!</p>
-          </div>
+        <div class="flex items-center gap-3 mb-8">
+          <i data-lucide="send" class="w-6 h-6 text-figma-slate"></i>
+          <h2 class="text-2xl font-extrabold text-figma-slate">Assistente de Formatação de Atendimento</h2>
         </div>
 
-        <div class="hidden md:block w-px bg-gray-200 h-28" aria-hidden="true"></div>
-
-        <form id="support-email-form" class="md:w-1/2 w-full space-y-3">
-          <label for="support-message" class="sr-only">Descreva sua dúvida ou problema</label>
-          <textarea 
-            id="support-message"
-            required
-            placeholder="Descreva sua dúvida ou problema..." 
-            class="w-full text-base border border-gray-300 rounded-md p-3 focus:border-figma-blue focus:ring-1 focus:ring-figma-blue resize-none h-24 text-figma-slate placeholder-gray-500 transition-colors"
-          ></textarea>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          <div class="relative">
-            <label for="support-sector" class="sr-only">Selecione o setor</label>
-            <select 
-              id="support-sector" 
-              required 
-              class="w-full text-base border border-gray-300 rounded-md p-3 appearance-none focus:border-figma-blue focus:ring-1 focus:ring-figma-blue text-gray-800 bg-white cursor-pointer transition-colors"
-            >
-              <option value="" disabled selected>Selecione o setor</option>
-              <option value="secretaria@unicatolica-to.edu.br">Secretaria Acadêmica</option>
-              <option value="financeiro@unicatolica-to.edu.br">Setor Financeiro</option>
-              <option value="cpsa@unicatolica-to.edu.br">Bolsas & FIES / CPSA</option>
-              <option value="suporte@unicatolica-to.edu.br">Suporte de TI</option>
-            </select>
-            <i data-lucide="chevron-down" class="w-5 h-5 absolute right-3 top-3.5 text-gray-500 pointer-events-none" aria-hidden="true"></i>
+          <!-- Lado Esquerdo: Inputs do Aluno -->
+          <div class="lg:col-span-6 space-y-5">
+            <div>
+              <label class="block text-xs font-bold text-figma-blue uppercase tracking-wider mb-2">
+                1. SELECIONE O SETOR DESTINO
+              </label>
+              <div class="relative">
+                <select id="assist-sector" class="w-full p-3.5 bg-white border border-slate-300 rounded-lg text-sm font-medium text-figma-slate appearance-none focus:outline-none focus:border-figma-blue cursor-pointer">
+                  <option value="Secretaria Acadêmica|secretaria@unicatolica-to.edu.br">Secretaria Acadêmica (secretaria@unicatolica-to.edu.br)</option>
+                  <option value="Setor Financeiro|financeiro@unicatolica-to.edu.br">Setor Financeiro (financeiro@unicatolica-to.edu.br)</option>
+                  <option value="Bolsas & FIES / CPSA|cpsa@unicatolica-to.edu.br">Bolsas & FIES / CPSA (cpsa@unicatolica-to.edu.br)</option>
+                  <option value="Suporte de TI|suporte@unicatolica-to.edu.br">Suporte de TI (suporte@unicatolica-to.edu.br)</option>
+                </select>
+                <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3.5 top-4 text-slate-500 pointer-events-none"></i>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-figma-blue uppercase tracking-wider mb-2">
+                2. DESCREVA RESUMIDAMENTE SEU PROBLEMA
+              </label>
+              <input 
+                type="text" 
+                id="assist-problem" 
+                placeholder="Ex: Baixa pendente do boleto pago via PIX há 48h..." 
+                class="w-full p-3.5 bg-white border border-slate-300 rounded-lg text-sm text-figma-slate focus:outline-none focus:border-figma-blue"
+              >
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-figma-blue uppercase tracking-wider mb-2">
+                  SEU NOME (OPCIONAL - LGPD)
+                </label>
+                <input 
+                  type="text" 
+                  id="assist-name" 
+                  placeholder="Ex: Gabriel Vidal" 
+                  class="w-full p-3.5 bg-white border border-slate-300 rounded-lg text-sm text-figma-slate focus:outline-none focus:border-figma-blue"
+                >
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-figma-blue uppercase tracking-wider mb-2">
+                  CURSO / PERÍODO (OPCIONAL)
+                </label>
+                <input 
+                  type="text" 
+                  id="assist-course" 
+                  placeholder="Ex: Eng. de Software - 2º P." 
+                  class="w-full p-3.5 bg-white border border-slate-300 rounded-lg text-sm text-figma-slate focus:outline-none focus:border-figma-blue"
+                >
+              </div>
+            </div>
           </div>
 
-          <button type="submit" class="w-full bg-figma-slate hover:bg-figma-blue text-white font-semibold text-base py-3 rounded-md transition-colors flex items-center justify-center gap-2">
-            <i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i> Enviar por E-mail
-          </button>
-        </form>
+          <!-- Lado Direito: Preview em Tempo Real & Ações -->
+          <div class="lg:col-span-6 bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-bold tracking-wider text-figma-border uppercase">PREVIEW DA MENSAGEM FORMATADA</span>
+              <span class="px-2 py-0.5 rounded bg-figma-cardLight text-figma-blue font-mono text-[10px] font-bold">100% LGPD</span>
+            </div>
 
+            <pre id="assist-preview" class="w-full p-4 bg-figma-cardLight/40 border border-slate-200 rounded-lg font-mono text-xs text-figma-slate whitespace-pre-wrap leading-relaxed overflow-x-auto"></pre>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <button type="button" id="btn-copy-whatsapp" class="w-full py-3 px-4 bg-figma-slate hover:bg-figma-border text-white rounded-lg font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span id="copy-whatsapp-label">Copiar & WhatsApp CIA</span>
+              </button>
+              <button type="button" id="btn-send-email" class="w-full py-3 px-4 bg-figma-blue hover:bg-figma-slate text-white rounded-lg font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer">
+                <i data-lucide="mail" class="w-4 h-4"></i> Enviar via E-mail
+              </button>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
-
-  </main>
 
   <!-- FOOTER INSTITUCIONAL -->
   <footer class="bg-figma-slate text-white py-14 border-t border-figma-border/30">
-    <div class="max-w-7xl mx-auto px-6 space-y-10">
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm leading-relaxed text-figma-cardLight">
-        
-        <div class="space-y-3">
-          <h3 class="font-bold text-base text-white font-sans">UniCatólica – Palmas (TO)</h3>
-          <p>
-            Centro Universitário Católica do Tocantins.<br>
-            Câmpus I: Av. Teotônio Segurado, Quadra 1402 Sul.<br>
-            Palmas - TO | CEP: 77019-900
-          </p>
+    <div class="max-w-7xl mx-auto px-6 space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs leading-relaxed text-figma-cardLight">
+        <div class="space-y-2">
+          <h4 class="font-bold text-sm text-white">UniCatólica – Palmas (TO)</h4>
+          <p>Centro Universitário Católica do Tocantins.<br>Câmpus II: Av. Teotônio Segurado, Quadra 1402 Sul.</p>
         </div>
-
-        <div class="space-y-3">
-          <h3 class="font-bold text-base text-white font-sans">Privacidade & LGPD</h3>
-          <p>
-            Este portal de autoatendimento opera de forma estritamente anônima. Nenhuma Informação Pessoal Identificável (PII), RA ou senha é armazenada ou solicitada.
-          </p>
+        <div class="space-y-2">
+          <h4 class="font-bold text-sm text-white">Privacidade & LGPD</h4>
+          <p>Este portal opera de forma estritamente anônima. Nenhuma Informação Pessoal Identificável (PII) é armazenada.</p>
         </div>
-
-        <div class="space-y-3">
-          <h3 class="font-bold text-base text-white font-sans">Desenvolvimento</h3>
-          <p>
-            Projeto MVP idealizado e desenvolvido pela <strong>Equipe 404</strong>.<br>
-            2º Período do Curso de Engenharia de Software.<br>
-            Orientação e Inovação Acadêmica UniCatólica.
-          </p>
+        <div class="space-y-2">
+          <h4 class="font-bold text-sm text-white">Desenvolvimento</h4>
+          <p>Projeto desenvolvido pela <strong>Equipe 404</strong> • Engenharia de Software • <a href="dashboard.html" class="underline text-white hover:text-blue-300">Acessar Painel de Telemetria</a></p>
         </div>
-
       </div>
-
-      <div class="border-t border-figma-border/40"></div>
-
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-figma-cardLight">
-        <p>© 2026 Centro Universitário Católica do Tocantins (UniCatólica). Todos os direitos reservados.</p>
-        <span class="inline-flex items-center px-3 py-1 rounded bg-figma-border/30 border border-figma-border/50 text-sm font-mono text-white">
-          v2.0.4 - MVP Final
-        </span>
+      <div class="border-t border-figma-border/40 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-figma-cardLight">
+        <p>© 2026 Centro Universitário Católica do Tocantins (UniCatólica).</p>
+        <span class="px-3 py-1 rounded bg-figma-border/30 border border-figma-border/50 font-mono text-white">v2.1.0 - CIA Telemetria</span>
       </div>
-
     </div>
   </footer>
 
-  <!-- MODAL / POP-UP DE VALIDAÇÃO DO MVP (FORMSPREE INTEGRADO) -->
-  <div id="validation-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+  <!-- MODAL DE VALIDAÇÃO DO MVP -->
+  <div id="validation-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
     <div class="bg-white rounded-xl shadow-2xl border border-figma-cardLight max-w-md w-full p-6 space-y-5 relative">
-      <button id="close-modal-btn" type="button" aria-label="Fechar pesquisa" class="absolute top-4 right-4 text-slate-600 hover:text-slate-900 font-bold text-2xl px-2">&times;</button>
-      
+      <button id="close-modal-btn" type="button" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-xl">&times;</button>
       <div class="space-y-1">
-        <span class="text-xs font-bold tracking-widest text-figma-blue uppercase bg-figma-cardLight px-2 py-0.5 rounded">Validação MVP</span>
-        <h2 id="modal-title" class="text-2xl font-extrabold text-figma-slate">Sua opinião ajuda a melhorar o CIA!</h2>
-        <p class="text-sm text-figma-border">Responda em 15 segundos e ajude a Equipe 404 a aprimorar este portal.</p>
+        <span class="text-[10px] font-bold tracking-widest text-figma-blue uppercase bg-figma-cardLight px-2 py-0.5 rounded">Validação MVP</span>
+        <h3 class="text-xl font-extrabold text-figma-slate">Sua opinião ajuda a melhorar o CIA!</h3>
+        <p class="text-xs text-figma-border">Responda em 15 segundos e ajude a Equipe 404 a aprimorar este portal.</p>
       </div>
 
-      <form id="mvp-validation-form" class="space-y-4 text-sm">
-        <fieldset>
-          <legend class="block font-bold text-figma-slate mb-1">1. Você conseguiu resolver sua dúvida aqui?</legend>
-          <div class="flex flex-wrap gap-4">
+      <form id="mvp-validation-form" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-figma-slate mb-1">1. Você conseguiu resolver sua dúvida aqui?</label>
+          <div class="flex gap-4">
             <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="resolveu" value="Sim" required> Sim</label>
             <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="resolveu" value="Parcialmente"> Parcialmente</label>
             <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="resolveu" value="Nao"> Não</label>
           </div>
-        </fieldset>
-
+        </div>
         <div>
-          <label for="modal-facilidade" class="block font-bold text-figma-slate mb-1">2. De 1 a 5, quão fácil foi usar o site?</label>
-          <select id="modal-facilidade" name="facilidade" required class="w-full p-2 border border-gray-300 rounded bg-white text-figma-slate focus:border-figma-blue">
+          <label class="block font-bold text-figma-slate mb-1">2. De 1 a 5, quão fácil foi usar o site?</label>
+          <select name="facilidade" required class="w-full p-2 border border-gray-300 rounded bg-white text-figma-slate">
             <option value="" disabled selected>Selecione uma nota</option>
             <option value="5">5 - Muito Fácil</option>
             <option value="4">4 - Fácil</option>
@@ -512,86 +383,28 @@
             <option value="1">1 - Muito Difícil</option>
           </select>
         </div>
-
-        <fieldset>
-          <legend class="block font-bold text-figma-slate mb-1">3. Usaria o site antes de ir ao balcão presencial?</legend>
-          <div class="flex flex-wrap gap-4">
+        <div>
+          <label class="block font-bold text-figma-slate mb-1">3. Usaria o site antes de ir ao balcão presencial?</label>
+          <div class="flex gap-4">
             <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="reutilizaria" value="Com certeza" required> Com certeza</label>
             <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="reutilizaria" value="Talvez"> Talvez</label>
             <label class="flex items-center gap-1.5 cursor-pointer"><input type="radio" name="reutilizaria" value="Não"> Não</label>
           </div>
-        </fieldset>
-
-        <div>
-          <label for="modal-comentario" class="block font-bold text-figma-slate mb-1">Sugestão / Crítica (Opcional):</label>
-          <textarea id="modal-comentario" name="comentario" rows="2" placeholder="O que podemos melhorar?" class="w-full p-2 border border-gray-300 rounded resize-none focus:border-figma-blue"></textarea>
         </div>
-
-        <button type="submit" class="w-full bg-figma-blue hover:bg-figma-slate text-white font-bold py-2.5 rounded transition-colors text-sm shadow-md">
+        <div>
+          <label class="block font-bold text-figma-slate mb-1">Sugestão / Crítica (Opcional):</label>
+          <textarea name="comentario" rows="2" placeholder="O que podemos melhorar?" class="w-full p-2 border border-gray-300 rounded resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-figma-blue hover:bg-figma-slate text-white font-bold py-2.5 rounded transition-colors text-xs shadow-md">
           Enviar Feedback da Pesquisa
         </button>
       </form>
-      
-      <div id="modal-success-msg" role="status" aria-live="polite" class="hidden text-center py-4 text-emerald-700 font-bold text-base">
+      <div id="modal-success-msg" class="hidden text-center py-4 text-emerald-600 font-bold text-sm">
         🎉 Obrigado! Seus dados foram computados com sucesso!
       </div>
     </div>
   </div>
 
-  <!-- BOTÃO FLUTUANTE DE ACESSIBILIDADE -->
-  <div class="fixed bottom-5 right-5 z-50">
-    <!-- ABA / PAINEL DE ACESSIBILIDADE -->
-    <div 
-      id="accessibility-panel" 
-      role="region" 
-      aria-label="Opções de acessibilidade"
-      class="hidden absolute bottom-full right-0 mb-3 w-72 sm:w-80 bg-white border border-figma-cardLight rounded-xl shadow-2xl p-5 space-y-4"
-    >
-      <div class="flex items-center justify-between border-b border-figma-cardLight pb-2">
-        <span class="font-bold text-base text-figma-slate">Acessibilidade</span>
-        <button type="button" id="accessibility-close-btn" aria-label="Fechar painel de acessibilidade" class="text-figma-border hover:text-figma-slate font-bold text-lg px-1.5">&times;</button>
-      </div>
-
-      <div class="space-y-2">
-        <span class="block text-sm font-semibold text-figma-slate">Tamanho da fonte</span>
-        <div class="flex items-center gap-2">
-          <button type="button" id="font-decrease" aria-label="Diminuir tamanho da fonte" title="Diminuir fonte" class="flex-1 py-2 rounded border border-figma-border/40 bg-white text-figma-slate font-bold hover:bg-figma-cardLight transition-colors">A-</button>
-          <button type="button" id="font-reset" aria-label="Restaurar tamanho padrão da fonte" title="Tamanho padrão" class="flex-1 py-2 rounded border border-figma-border/40 bg-white text-figma-slate font-bold hover:bg-figma-cardLight transition-colors">A</button>
-          <button type="button" id="font-increase" aria-label="Aumentar tamanho da fonte" title="Aumentar fonte" class="flex-1 py-2 rounded border border-figma-border/40 bg-white text-figma-slate font-bold hover:bg-figma-cardLight transition-colors">A+</button>
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <span class="block text-sm font-semibold text-figma-slate">Contraste</span>
-        <button type="button" id="toggle-contrast" aria-pressed="false" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md border border-figma-slate bg-figma-slate text-white text-sm font-semibold hover:bg-figma-blue transition-colors">
-          <i data-lucide="contrast" class="w-4 h-4" aria-hidden="true"></i>
-          <span>Ativar Alto Contraste</span>
-        </button>
-      </div>
-
-      <div class="pt-2 border-t border-figma-cardLight space-y-1.5 text-sm">
-        <span class="block font-semibold text-figma-slate">Navegação rápida</span>
-        <div class="flex flex-col gap-1">
-          <a href="#search-input" class="accessibility-jump text-figma-blue hover:underline">Ir para busca (Ctrl+K ou /)</a>
-          <a href="#faqs" class="accessibility-jump text-figma-blue hover:underline">Ir para perguntas frequentes</a>
-          <a href="#canais" class="accessibility-jump text-figma-blue hover:underline">Ir para canais oficiais</a>
-        </div>
-      </div>
-    </div>
-
-    <button 
-      type="button" 
-      id="accessibility-toggle-btn" 
-      aria-expanded="false" 
-      aria-controls="accessibility-panel"
-      aria-label="Abrir opções de acessibilidade"
-      class="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-figma-blue hover:bg-figma-slate text-white text-sm font-bold shadow-lg border-2 border-white/80 transition-colors"
-    >
-      <i data-lucide="accessibility" class="w-5 h-5" aria-hidden="true"></i>
-      <span class="hidden sm:inline">Acessibilidade</span>
-    </button>
-  </div>
-
-  <script src="app.js"></script>
+  <script src="src/app.js"></script>
 </body>
 </html>
