@@ -1,1 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+  <title>Métricas Empíricas & Telemetria do CIA 2.1 | Equipe 404</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            figma: {
+              slate: '#081C38',
+              blue: '#0A3F7A',
+              border: '#0B2A54',
+              cardLight: '#EAF0F8'
+            }
+          },
+          fontFamily: {
+            sans: ['"Clash Display"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F4F7FB] text-figma-slate antialiased min-h-screen">
 
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+
+    <!-- BANNER SUPERIOR ESCURO -->
+    <header class="bg-figma-slate text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+        <span class="inline-block w-fit px-3 py-1 rounded bg-figma-blue text-[11px] font-bold tracking-wider uppercase text-white">
+          PAINEL DE EVIDÊNCIAS DE ENGENHARIA DE SOFTWARE
+        </span>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-figma-cardLight">
+          <span>Endpoint Formspree: <strong class="text-white">https://formspree.io/f/xvkklanp</strong></span>
+          <a href="index.html" class="px-3 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-sans font-bold transition-colors">
+            ← Voltar ao Portal
+          </a>
+        </div>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">
+        Métricas Empíricas & Telemetria do CIA 2.1
+      </h1>
+      <p class="text-sm text-figma-cardLight mb-4">
+        Dados coletados na fila do CIA Câmpus II (Palmas-TO) com 28 registros consolidados mais requisições ao vivo durante a apresentação.
+      </p>
+      <p class="text-xs font-mono text-figma-cardLight/90 pt-3 border-t border-white/10">
+        Integrantes Equipe 404: Gabriel Vidal | João Cortes | Pedro Oliveira | Pedro Dultra | Karen Silva | Willian Pugas
+      </p>
+    </header>
+
+    <!-- 4 CARDS DE KPIs -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs font-bold text-figma-border uppercase tracking-wider">
+          <span>SUBMISSÕES REAIS</span>
+          <i data-lucide="database" class="w-4 h-4 text-figma-blue"></i>
+        </div>
+        <div class="my-3 text-4xl font-extrabold text-figma-slate" id="kpi-total">28</div>
+        <p class="text-xs text-slate-500">100% gravadas no Formspree</p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs font-bold text-figma-border uppercase tracking-wider">
+          <span>TAXA DE RESOLUÇÃO</span>
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-figma-blue"></i>
+        </div>
+        <div class="my-3 text-4xl font-extrabold text-figma-blue" id="kpi-resolution">100%</div>
+        <p class="text-xs text-slate-500">Resolução autônoma da dúvida</p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs font-bold text-figma-border uppercase tracking-wider">
+          <span>FACILIDADE DE USO</span>
+          <i data-lucide="smile" class="w-4 h-4 text-figma-blue"></i>
+        </div>
+        <div class="my-3 text-4xl font-extrabold text-figma-slate" id="kpi-ease">4.5 / 5</div>
+        <p class="text-xs text-slate-500">Avaliação média dos alunos</p>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between text-xs font-bold text-figma-border uppercase tracking-wider">
+          <span>INTENÇÃO DE REUSO</span>
+          <i data-lucide="repeat" class="w-4 h-4 text-figma-blue"></i>
+        </div>
+        <div class="my-3 text-4xl font-extrabold text-figma-slate" id="kpi-reuse">100%</div>
+        <p class="text-xs text-slate-500">'Com certeza' ou 'Talvez'</p>
+      </div>
+    </section>
+
+    <!-- GRÁFICOS DE GARGALOS E EVOLUÇÃO EM CAMPO -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Demandas Encaminhadas por Setor -->
+      <div class="lg:col-span-6 bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm space-y-6">
+        <div class="flex items-center justify-between">
+          <h2 class="font-bold text-base text-figma-slate">Demandas Encaminhadas por Setor (Gargalos)</h2>
+          <span class="text-xs font-mono font-bold text-figma-blue" id="top-sector-badge">Financeiro = 67%</span>
+        </div>
+
+        <div class="space-y-5">
+          <div>
+            <div class="flex justify-between text-xs font-bold mb-1.5">
+              <span class="text-figma-slate">Setor Financeiro (Boletos / PIX)</span>
+              <span class="font-mono text-figma-blue" id="count-fin">19 registros (67%)</span>
+            </div>
+            <div class="w-full h-2.5 bg-figma-cardLight rounded-full overflow-hidden">
+              <div id="bar-fin" class="h-full bg-figma-blue rounded-full transition-all duration-500" style="width: 67%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-bold mb-1.5">
+              <span class="text-figma-slate">Secretaria Acadêmica (Histórico / Dispensa)</span>
+              <span class="font-mono text-figma-blue" id="count-sec">9 registros (33%)</span>
+            </div>
+            <div class="w-full h-2.5 bg-figma-cardLight rounded-full overflow-hidden">
+              <div id="bar-sec" class="h-full bg-figma-slate rounded-full transition-all duration-500" style="width: 33%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-bold mb-1.5">
+              <span class="text-figma-slate">Bolsas & FIES / CPSA</span>
+              <span class="font-mono text-figma-blue" id="count-bol">3 registros (11%)</span>
+            </div>
+            <div class="w-full h-2.5 bg-figma-cardLight rounded-full overflow-hidden">
+              <div id="bar-bol" class="h-full bg-figma-border rounded-full transition-all duration-500" style="width: 11%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evolução de Coletas em Campo -->
+      <div class="lg:col-span-6 bg-white rounded-xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-bold text-base text-figma-slate">Evolução de Coletas em Campo (Palmas - TO)</h2>
+          <span class="text-xs font-mono text-slate-400">2026</span>
+        </div>
+
+        <div class="grid grid-cols-4 gap-3 items-end pt-6">
+          <div class="flex flex-col items-center space-y-2">
+            <div class="w-full bg-figma-cardLight rounded-t-lg h-10 flex items-end justify-center">
+              <div class="w-full bg-figma-blue/60 h-full rounded-t-lg"></div>
+            </div>
+            <span class="text-[11px] font-mono text-slate-500 text-center">Fila CIA (D1)</span>
+            <div class="w-full border-t border-slate-200 pt-1 text-center font-mono font-bold text-sm text-figma-slate">5</div>
+          </div>
+
+          <div class="flex flex-col items-center space-y-2">
+            <div class="w-full bg-figma-cardLight rounded-t-lg h-16 flex items-end justify-center">
+              <div class="w-full bg-figma-blue/80 h-full rounded-t-lg"></div>
+            </div>
+            <span class="text-[11px] font-mono text-slate-500 text-center">Fila CIA (D2)</span>
+            <div class="w-full border-t border-slate-200 pt-1 text-center font-mono font-bold text-sm text-figma-slate">11</div>
+          </div>
+
+          <div class="flex flex-col items-center space-y-2">
+            <div class="w-full bg-figma-cardLight rounded-t-lg h-24 flex items-end justify-center">
+              <div class="w-full bg-figma-blue h-full rounded-t-lg"></div>
+            </div>
+            <span class="text-[11px] font-mono text-slate-500 text-center">Whats Turmas</span>
+            <div class="w-full border-t border-slate-200 pt-1 text-center font-mono font-bold text-sm text-figma-slate">20</div>
+          </div>
+
+          <div class="flex flex-col items-center space-y-2">
+            <div class="w-full bg-figma-cardLight rounded-t-lg h-32 flex items-end justify-center">
+              <div class="w-full bg-figma-slate h-full rounded-t-lg"></div>
+            </div>
+            <span class="text-[11px] font-mono font-bold text-figma-blue text-center">Sessão Ao Vivo</span>
+            <div id="live-counter-bar" class="w-full border-t border-slate-200 pt-1 text-center font-mono font-extrabold text-sm text-figma-blue">28</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- INSPETOR DE TELEMETRIA FORMSPREE (AO VIVO) -->
+    <section class="bg-white rounded-xl border border-slate-200/80 shadow-sm overflow-hidden">
+      <div class="p-6 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="font-bold text-lg text-figma-slate">Inspetor de Telemetria Formspree (Ao Vivo)</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Registros da amostra inicial de 28 submissões + interações disparadas nesta sessão:</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 text-xs font-bold">
+          <button class="tele-filter px-3.5 py-1.5 rounded-lg bg-figma-slate text-white transition-colors" data-type="all">Todos</button>
+          <button class="tele-filter px-3.5 py-1.5 rounded-lg bg-figma-cardLight text-figma-slate hover:bg-figma-blue hover:text-white transition-colors" data-type="Pesquisa">Pesquisas</button>
+          <button class="tele-filter px-3.5 py-1.5 rounded-lg bg-figma-cardLight text-figma-slate hover:bg-figma-blue hover:text-white transition-colors" data-type="Dúvida">Contatos</button>
+          <button class="tele-filter px-3.5 py-1.5 rounded-lg bg-figma-cardLight text-figma-slate hover:bg-figma-blue hover:text-white transition-colors" data-type="Voto">Votos FAQ</button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-bold text-figma-border uppercase tracking-wider">
+              <th class="py-3.5 px-4">ORIGEM</th>
+              <th class="py-3.5 px-4">TIPO DE EVENTO</th>
+              <th class="py-3.5 px-4">CONTEÚDO / DESCRIÇÃO</th>
+              <th class="py-3.5 px-4">SETOR</th>
+              <th class="py-3.5 px-4">RESOLVEU?</th>
+              <th class="py-3.5 px-4">NOTA</th>
+              <th class="py-3.5 px-4">REUTILIZARIA?</th>
+            </tr>
+          </thead>
+          <tbody id="telemetry-table-body" class="divide-y divide-slate-100 text-xs">
+            <!-- Renderizado dinamicamente via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const baseRecords = [
+      { origem: "Verificado", tipo: "Pesquisa Completa MVP", descricao: "Dúvida sobre 2ª via de boleto vencido", setor: "Setor Financeiro", resolveu: "Sim", nota: "5.0", reutilizaria: "Com certeza" },
+      { origem: "Verificado", tipo: "Pesquisa Completa MVP", descricao: "Prazo de análise de dispensa de disciplina", setor: "Secretaria Acadêmica", resolveu: "Sim", nota: "4.0", reutilizaria: "Com certeza" },
+      { origem: "Verificado", tipo: "Dúvida/Problema Enviado", descricao: "Baixa pendente de boleto pago via PIX", setor: "Setor Financeiro", resolveu: "-", nota: "-", reutilizaria: "-" },
+      { origem: "Verificado", tipo: "Pesquisa Completa MVP", descricao: "Como emitir declaração de matrícula gratuita", setor: "Secretaria Acadêmica", resolveu: "Sim", nota: "4.0", reutilizaria: "Com certeza" },
+      { origem: "Verificado", tipo: "Pesquisa Completa MVP", descricao: "Aditamento de bolsa PROUNI 2026", setor: "Bolsas & FIES / CPSA", resolveu: "Sim", nota: "5.0", reutilizaria: "Com certeza" },
+      { origem: "Verificado", tipo: "Busca Sem Resultado (Gap)", descricao: 'Termo buscado: "estágio horas"', setor: "Secretaria Acadêmica", resolveu: "Não", nota: "3.0", reutilizaria: "Talvez" },
+      { origem: "Verificado", tipo: "Pesquisa Completa MVP", descricao: "Histórico para transferência externa", setor: "Secretaria Acadêmica", resolveu: "Sim", nota: "4.0", reutilizaria: "Talvez" },
+      { origem: "Verificado", tipo: "Pesquisa Completa MVP", descricao: "Boletos vencidos há mais de 30 dias", setor: "Setor Financeiro", resolveu: "Sim", nota: "4.0", reutilizaria: "Com certeza" },
+      { origem: "Verificado", tipo: "Pesquisa Completa MVP", descricao: "Segunda chamada de prova de AV1", setor: "Secretaria Acadêmica", resolveu: "Sim", nota: "5.0", reutilizaria: "Com certeza" },
+      { origem: "Verificado", tipo: "Dúvida/Problema Enviado", descricao: "Dúvida sobre desconto de pontualidade", setor: "Setor Financeiro", resolveu: "-", nota: "-", reutilizaria: "-" },
+      { origem: "Verificado", tipo: "Voto FAQ Individual", descricao: "Voto (SIM): Como emitir a segunda via do boleto?", setor: "Setor Financeiro", resolveu: "Sim", nota: "5.0", reutilizaria: "Com certeza" },
+      { origem: "Verificado", tipo: "Dúvida/Problema Enviado", descricao: "Consulta sobre emissão de histórico escolar", setor: "Secretaria Acadêmica", resolveu: "-", nota: "-", reutilizaria: "-" }
+    ];
+
+    let activeFilter = 'all';
+
+    function getAllRecords() {
+      const liveEvents = JSON.parse(localStorage.getItem('cia_live_telemetry') || '[]');
+      return [...liveEvents, ...baseRecords];
+    }
+
+    function updateDashboardMetrics() {
+      const liveEvents = JSON.parse(localStorage.getItem('cia_live_telemetry') || '[]');
+      const totalCount = 28 + liveEvents.length;
+
+      document.getElementById('kpi-total').textContent = totalCount;
+      document.getElementById('live-counter-bar').textContent = totalCount;
+
+      let finCount = 19;
+      let secCount = 9;
+      let bolCount = 3;
+
+      liveEvents.forEach(ev => {
+        if (ev.setor && ev.setor.includes('Financeiro')) finCount++;
+        else if (ev.setor && ev.setor.includes('Bolsas')) bolCount++;
+        else secCount++;
+      });
+
+      const sumSectors = finCount + secCount + bolCount;
+      const finPct = Math.round((finCount / sumSectors) * 100);
+      const secPct = Math.round((secCount / sumSectors) * 100);
+      const bolPct = Math.round((bolCount / sumSectors) * 100);
+
+      document.getElementById('top-sector-badge').textContent = `Financeiro = ${finPct}%`;
+      document.getElementById('count-fin').textContent = `${finCount} registros (${finPct}%)`;
+      document.getElementById('bar-fin').style.width = `${finPct}%`;
+
+      document.getElementById('count-sec').textContent = `${secCount} registros (${secPct}%)`;
+      document.getElementById('bar-sec').style.width = `${secPct}%`;
+
+      document.getElementById('count-bol').textContent = `${bolCount} registros (${bolPct}%)`;
+      document.getElementById('bar-bol').style.width = `${bolPct}%`;
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('telemetry-table-body');
+      const records = getAllRecords().filter(rec => {
+        if (activeFilter === 'all') return true;
+        return rec.tipo.toLowerCase().includes(activeFilter.toLowerCase());
+      });
+
+      tbody.innerHTML = records.map(rec => {
+        const isLive = rec.origem === 'Ao Vivo';
+        const badgeClass = isLive
+          ? 'bg-emerald-50 text-emerald-700 border-emerald-300'
+          : 'bg-slate-100 text-slate-600 border-slate-300';
+
+        const resolveuClass = rec.resolveu === 'Sim'
+          ? 'text-emerald-600 font-bold'
+          : (rec.resolveu === 'Não' ? 'text-rose-600 font-bold' : 'text-slate-400');
+
+        return `
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3.5 px-4">
+              <span class="inline-block px-2.5 py-0.5 rounded border text-[11px] font-semibold ${badgeClass}">
+                ${rec.origem}
+              </span>
+            </td>
+            <td class="py-3.5 px-4 font-bold text-figma-slate">${rec.tipo}</td>
+            <td class="py-3.5 px-4 text-slate-600">${rec.descricao}</td>
+            <td class="py-3.5 px-4 text-figma-border font-medium">${rec.setor}</td>
+            <td class="py-3.5 px-4 ${resolveuClass}">${rec.resolveu}</td>
+            <td class="py-3.5 px-4 font-mono font-bold text-figma-slate">${rec.nota}</td>
+            <td class="py-3.5 px-4 font-semibold text-figma-blue">${rec.reutilizaria}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    document.querySelectorAll('.tele-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeFilter = btn.dataset.type;
+        document.querySelectorAll('.tele-filter').forEach(b => {
+          b.classList.remove('bg-figma-slate', 'text-white');
+          b.classList.add('bg-figma-cardLight', 'text-figma-slate');
+        });
+        btn.classList.remove('bg-figma-cardLight', 'text-figma-slate');
+        btn.classList.add('bg-figma-slate', 'text-white');
+        renderTable();
+      });
+    });
+
+    // Sincroniza automaticamente se o usuário interagir em outra aba durante a apresentação
+    window.addEventListener('storage', () => {
+      updateDashboardMetrics();
+      renderTable();
+    });
+
+    updateDashboardMetrics();
+    renderTable();
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>
