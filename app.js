@@ -1,4 +1,3 @@
-// ENDPOINT DO FORMSPREE CONFIGURADO PARA A EQUIPE 404
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xvkklanp";
 
 let faqsData = [
@@ -193,13 +192,8 @@ let faqsData = [
 
 let fuseInstance = null;
 let activeFilter = 'all';
-let faqContainer;
-let emptyState;
-let searchInput;
-let searchBtn;
-let counterBadge;
-let resultsCount;
-let lastFocusedElement = null;
+let faqContainer, emptyState, searchInput, searchBtn, counterBadge, resultsCount;
+let lastLoggedEmptyQuery = '';
 
 document.addEventListener('DOMContentLoaded', () => {
   faqContainer = document.getElementById('faq-container');
@@ -209,147 +203,17 @@ document.addEventListener('DOMContentLoaded', () => {
   counterBadge = document.getElementById('faq-counter-badge');
   resultsCount = document.getElementById('results-count');
 
-  initAccessibilityControls();
-  initMobileMenu();
   initFuseSearch();
   setupEventListeners();
-  initScrollAnimations();
+  setupFormattingAssistant();
+  setupValidationModal();
   renderFaqs(faqsData);
   refreshIcons();
-  setupValidationModal();
 });
-
-function initMobileMenu() {
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileNav = document.getElementById('mobile-nav');
-  if (!menuBtn || !mobileNav) return;
-
-  const setMenuOpen = (open, restoreFocus = false) => {
-    mobileNav.classList.toggle('hidden', !open);
-    menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.setAttribute('aria-label', open ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
-    if (!open && restoreFocus) {
-      menuBtn.focus();
-    }
-  };
-
-  menuBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = !mobileNav.classList.contains('hidden');
-    setMenuOpen(!isOpen);
-  });
-
-  mobileNav.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => setMenuOpen(false));
-  });
-
-  document.addEventListener('click', (e) => {
-    if (mobileNav.classList.contains('hidden')) return;
-    if (!mobileNav.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
-      setMenuOpen(false);
-    }
-  });
-}
-
-function initAccessibilityControls() {
-  const root = document.documentElement;
-  const toggleBtn = document.getElementById('accessibility-toggle-btn');
-  const panel = document.getElementById('accessibility-panel');
-  const closePanelBtn = document.getElementById('accessibility-close-btn');
-  const contrastBtn = document.getElementById('toggle-contrast');
-  const decreaseBtn = document.getElementById('font-decrease');
-  const resetBtn = document.getElementById('font-reset');
-  const increaseBtn = document.getElementById('font-increase');
-
-  const setPanelOpen = (open, restoreFocus = false) => {
-    if (!panel || !toggleBtn) return;
-    panel.classList.toggle('hidden', !open);
-    toggleBtn.setAttribute('aria-expanded', String(open));
-    if (!open && restoreFocus) {
-      toggleBtn.focus();
-    }
-  };
-
-  if (toggleBtn && panel) {
-    toggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = !panel.classList.contains('hidden');
-      setPanelOpen(!isOpen);
-    });
-  }
-
-  if (closePanelBtn) {
-    closePanelBtn.addEventListener('click', () => setPanelOpen(false, true));
-  }
-
-  document.querySelectorAll('.accessibility-jump').forEach(link => {
-    link.addEventListener('click', () => setPanelOpen(false));
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!panel || panel.classList.contains('hidden')) return;
-    if (!panel.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
-      setPanelOpen(false);
-    }
-  });
-
-  const savedContrast = localStorage.getItem('cia_high_contrast');
-  const prefersMoreContrast = window.matchMedia && window.matchMedia('(prefers-contrast: more)').matches;
-  const isHighContrast = savedContrast !== null ? savedContrast === 'true' : prefersMoreContrast;
-
-  const applyContrast = (enabled) => {
-    root.classList.toggle('high-contrast', enabled);
-    if (contrastBtn) {
-      contrastBtn.setAttribute('aria-pressed', String(enabled));
-      const labelSpan = contrastBtn.querySelector('span');
-      if (labelSpan) {
-        labelSpan.textContent = enabled ? 'Desativar Alto Contraste' : 'Ativar Alto Contraste';
-      }
-    }
-    localStorage.setItem('cia_high_contrast', String(enabled));
-  };
-
-  applyContrast(isHighContrast);
-
-  if (contrastBtn) {
-    contrastBtn.addEventListener('click', () => {
-      applyContrast(!root.classList.contains('high-contrast'));
-    });
-  }
-
-  let fontScale = parseFloat(localStorage.getItem('cia_font_scale')) || 1;
-  const MIN_SCALE = 0.85;
-  const MAX_SCALE = 1.4;
-  const STEP = 0.1;
-
-  const applyFontScale = (scale) => {
-    fontScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, Number(scale.toFixed(2))));
-    root.style.setProperty('--font-scale', String(fontScale));
-    localStorage.setItem('cia_font_scale', String(fontScale));
-  };
-
-  applyFontScale(fontScale);
-
-  if (decreaseBtn) decreaseBtn.addEventListener('click', () => applyFontScale(fontScale - STEP));
-  if (resetBtn) resetBtn.addEventListener('click', () => applyFontScale(1));
-  if (increaseBtn) increaseBtn.addEventListener('click', () => applyFontScale(fontScale + STEP));
-}
-
-function initScrollAnimations() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-}
 
 function initFuseSearch() {
   if (typeof Fuse === 'undefined') return;
-  const options = {
+  fuseInstance = new Fuse(faqsData, {
     includeScore: true,
     threshold: 0.4,
     ignoreLocation: true,
@@ -359,8 +223,7 @@ function initFuseSearch() {
       { name: 'steps', weight: 0.2 },
       { name: 'category', weight: 0.1 }
     ]
-  };
-  fuseInstance = new Fuse(faqsData, options);
+  });
 }
 
 function renderFaqs(items) {
@@ -384,42 +247,38 @@ function renderFaqs(items) {
     itemEl.dataset.id = faq.id;
 
     const savedVote = localStorage.getItem(`cia_feedback_${faq.id}`);
-    const stepsHtml = faq.steps.map(step => `<p class="text-base sm:text-lg text-figma-slate leading-relaxed">• ${step}</p>`).join('');
-    const headerId = `faq-header-${faq.id}`;
-    const contentId = `faq-content-${faq.id}`;
+    const stepsHtml = faq.steps.map(step => `<p class="text-base text-figma-slate leading-relaxed">• ${step}</p>`).join('');
 
     itemEl.innerHTML = `
-      <h3>
-        <button type="button" id="${headerId}" aria-expanded="false" aria-controls="${contentId}" class="accordion-header w-full text-left font-semibold text-figma-slate hover:text-figma-blue flex justify-between items-center transition-colors cursor-pointer py-1">
-          <span class="font-bold text-figma-slate text-xl sm:text-2xl pointer-events-none">${faq.title}</span>
-          <span class="accordion-icon text-2xl font-mono text-figma-blue font-bold ml-4 pointer-events-none shrink-0" aria-hidden="true">+</span>
-        </button>
-      </h3>
+      <button type="button" class="accordion-header w-full text-left font-semibold text-figma-slate hover:text-figma-blue flex justify-between items-center transition-colors cursor-pointer">
+        <h3 class="font-bold text-figma-slate text-lg sm:text-xl pointer-events-none">${faq.title}</h3>
+        <span class="accordion-icon text-2xl font-mono text-figma-blue font-bold ml-4 pointer-events-none">+</span>
+      </button>
       
-      <div id="${contentId}" role="region" aria-labelledby="${headerId}" class="accordion-content hidden">
+      <div class="accordion-content hidden">
         <div class="pt-4 space-y-4 max-w-2xl">
           ${stepsHtml}
           ${faq.important_note ? `
-            <div class="p-3 bg-figma-cardLight/50 border-l-4 border-figma-blue text-base text-figma-slate rounded-r">
+            <div class="p-3 bg-figma-cardLight/50 border-l-4 border-figma-blue text-sm text-figma-slate rounded-r">
               <strong>Atenção:</strong> ${faq.important_note}
             </div>
           ` : ''}
-          <div class="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm">
+          <div class="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
             ${faq.action_link ? `
-              <a href="${faq.action_link.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 font-bold text-figma-blue hover:text-figma-slate transition-colors text-base">
-                ${faq.action_link.text} <i data-lucide="arrow-up-right" class="w-4 h-4" aria-hidden="true"></i>
+              <a href="${faq.action_link.url}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 font-bold text-figma-blue hover:text-figma-slate transition-colors text-sm">
+                ${faq.action_link.text} <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
               </a>
             ` : '<div></div>'}
             
-            <div class="feedback-box flex items-center gap-2 text-sm text-figma-border">
+            <div class="feedback-box flex items-center gap-2 text-xs text-figma-border">
               ${savedVote ? `
                 <span class="text-figma-blue font-semibold">Obrigado pelo seu feedback!</span>
               ` : `
                 <span>Esta resposta ajudou?</span>
-                <button type="button" class="feedback-btn px-3 py-1 rounded bg-figma-cardLight/60 hover:bg-figma-cardLight font-bold text-figma-slate transition-colors" data-vote="sim" data-id="${faq.id}">
+                <button type="button" class="feedback-btn px-2.5 py-1 rounded bg-figma-cardLight/60 hover:bg-figma-cardLight font-bold text-figma-slate transition-colors" data-vote="sim" data-id="${faq.id}" data-title="${faq.title}">
                   👍 Sim
                 </button>
-                <button type="button" class="feedback-btn px-3 py-1 rounded bg-figma-cardLight/60 hover:bg-figma-cardLight font-bold text-figma-slate transition-colors" data-vote="nao" data-id="${faq.id}">
+                <button type="button" class="feedback-btn px-2.5 py-1 rounded bg-figma-cardLight/60 hover:bg-figma-cardLight font-bold text-figma-slate transition-colors" data-vote="nao" data-id="${faq.id}" data-title="${faq.title}">
                   👎 Não
                 </button>
               `}
@@ -448,6 +307,19 @@ function filterFaqs() {
     results = results.filter(item => item.category === activeFilter);
   }
 
+  // Captura termo sem resultado (Gap) para telemetria ao vivo
+  if (query.length >= 4 && results.length === 0 && query.toLowerCase() !== lastLoggedEmptyQuery) {
+    lastLoggedEmptyQuery = query.toLowerCase();
+    logTelemetryEvent({
+      tipo: "Busca Sem Resultado (Gap)",
+      descricao: `Termo buscado: "${query}"`,
+      setor: "Secretaria Acadêmica",
+      resolveu: "Não",
+      nota: "3.0",
+      reutilizaria: "Talvez"
+    });
+  }
+
   renderFaqs(results);
 }
 
@@ -455,128 +327,37 @@ function setupEventListeners() {
   if (searchInput) searchInput.addEventListener('input', filterFaqs);
   if (searchBtn) searchBtn.addEventListener('click', filterFaqs);
 
-  // Form de Envio por E-mail do Setor (registra no Formspree e abre mailto)
-  const supportForm = document.getElementById('support-email-form');
-  if (supportForm) {
-    supportForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const sectorEmail = document.getElementById('support-sector').value;
-      const message = document.getElementById('support-message').value;
-
-      if (!sectorEmail) {
-        alert('Por favor, selecione um setor.');
-        return;
-      }
-
-      sendDataToFormspree({
-        tipo: "Dúvida/Problema Enviado",
-        setor: sectorEmail,
-        mensagem: message
-      });
-
-      const subject = encodeURIComponent("Dúvida do Aluno - CIA 2.0");
-      const body = encodeURIComponent(message);
-      window.location.href = `mailto:${sectorEmail}?subject=${subject}&body=${body}`;
-    });
-  }
-
   document.addEventListener('keydown', (e) => {
-    const activeTag = document.activeElement ? document.activeElement.tagName : '';
-    const isTyping = ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeTag);
-
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
       if (searchInput) searchInput.focus();
-      return;
-    }
-
-    if (e.key === '/' && !isTyping) {
-      e.preventDefault();
-      if (searchInput) searchInput.focus();
-      return;
-    }
-
-    if (e.key === 'Escape') {
-      const mobileNav = document.getElementById('mobile-nav');
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      if (mobileNav && !mobileNav.classList.contains('hidden')) {
-        mobileNav.classList.add('hidden');
-        if (mobileMenuBtn) {
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
-          mobileMenuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
-          mobileMenuBtn.focus();
-        }
-        return;
-      }
-      const accPanel = document.getElementById('accessibility-panel');
-      const accToggle = document.getElementById('accessibility-toggle-btn');
-      if (accPanel && !accPanel.classList.contains('hidden')) {
-        accPanel.classList.add('hidden');
-        if (accToggle) {
-          accToggle.setAttribute('aria-expanded', 'false');
-          accToggle.focus();
-        }
-        return;
-      }
-      const modal = document.getElementById('validation-modal');
-      if (modal && !modal.classList.contains('hidden')) {
-        closeValidationModal();
-        return;
-      }
-      if (document.activeElement === searchInput && searchInput.value) {
-        searchInput.value = '';
-        filterFaqs();
-      }
     }
   });
 
   if (faqContainer) {
-    faqContainer.addEventListener('keydown', (e) => {
-      const header = e.target.closest('.accordion-header');
-      if (!header) return;
-
-      const headers = Array.from(faqContainer.querySelectorAll('.accordion-header'));
-      const currentIndex = headers.indexOf(header);
-      if (currentIndex === -1) return;
-
-      let nextIndex = null;
-      if (e.key === 'ArrowDown') nextIndex = (currentIndex + 1) % headers.length;
-      else if (e.key === 'ArrowUp') nextIndex = (currentIndex - 1 + headers.length) % headers.length;
-      else if (e.key === 'Home') nextIndex = 0;
-      else if (e.key === 'End') nextIndex = headers.length - 1;
-
-      if (nextIndex !== null) {
-        e.preventDefault();
-        headers[nextIndex].focus();
-      }
-    });
-
     faqContainer.addEventListener('click', (e) => {
       const header = e.target.closest('.accordion-header');
       if (header) {
         e.preventDefault();
-        
         const item = header.closest('.accordion-item');
         const content = item.querySelector('.accordion-content');
         const icon = header.querySelector('.accordion-icon');
         const isCurrentlyOpen = !content.classList.contains('hidden');
 
         document.querySelectorAll('.accordion-content').forEach(c => c.classList.add('hidden'));
-        document.querySelectorAll('.accordion-header').forEach(h => h.setAttribute('aria-expanded', 'false'));
         document.querySelectorAll('.accordion-icon').forEach(ic => ic.textContent = '+');
 
         if (!isCurrentlyOpen) {
           content.classList.remove('hidden');
-          header.setAttribute('aria-expanded', 'true');
           icon.textContent = '—';
         }
         return;
       }
 
-      // CAPTURA DO VOTO INDIVIDUAL E ENVIO AO FORMSPREE
       const feedbackBtn = e.target.closest('.feedback-btn');
       if (feedbackBtn) {
         const faqId = feedbackBtn.dataset.id;
+        const faqTitle = feedbackBtn.dataset.title;
         const vote = feedbackBtn.dataset.vote;
         const box = feedbackBtn.closest('.feedback-box');
         
@@ -585,15 +366,18 @@ function setupEventListeners() {
           box.innerHTML = `<span class="text-figma-blue font-semibold">Obrigado pelo seu feedback!</span>`;
         }
 
-        sendDataToFormspree({
+        logTelemetryEvent({
           tipo: "Voto FAQ Individual",
-          faq_id: faqId,
-          voto: vote
+          descricao: `Voto (${vote.toUpperCase()}): ${faqTitle}`,
+          setor: faqId.startsWith('fin') ? 'Setor Financeiro' : (faqId.startsWith('bol') ? 'Bolsas & FIES / CPSA' : 'Secretaria Acadêmica'),
+          resolveu: vote === 'sim' ? 'Sim' : 'Não',
+          nota: vote === 'sim' ? '5.0' : '3.0',
+          reutilizaria: 'Com certeza'
         });
 
         setTimeout(() => {
           openValidationModal();
-        }, 800);
+        }, 700);
       }
     });
   }
@@ -624,65 +408,128 @@ function setupEventListeners() {
   });
 }
 
-function closeValidationModal() {
-  const modal = document.getElementById('validation-modal');
-  if (!modal) return;
-  modal.classList.add('hidden');
-  if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-    lastFocusedElement.focus();
-    lastFocusedElement = null;
+// =============================================================
+// ASSISTENTE DE FORMATAÇÃO DE ATENDIMENTO (CIA 2.1)
+// =============================================================
+function setupFormattingAssistant() {
+  const sectorEl = document.getElementById('assist-sector');
+  const problemEl = document.getElementById('assist-problem');
+  const nameEl = document.getElementById('assist-name');
+  const courseEl = document.getElementById('assist-course');
+  const previewEl = document.getElementById('assist-preview');
+  const btnCopyWa = document.getElementById('btn-copy-whatsapp');
+  const btnEmail = document.getElementById('btn-send-email');
+
+  if (!sectorEl || !previewEl) return;
+
+  function buildFormattedMessage() {
+    const [sectorName] = sectorEl.value.split('|');
+    const problemText = problemEl.value.trim() || '[Descreva sua dúvida ex: Baixa de boleto PIX]';
+    const studentName = nameEl.value.trim() || '[Seu Nome Completo]';
+    const courseText = courseEl.value.trim() || '[Seu Curso / Período]';
+
+    return `SOLICITAÇÃO DE ATENDIMENTO – CIA 2.1 (UNICATÓLICA)
+--------------------------------------------------
+Setor Destino: ${sectorName}
+Aluno(a): ${studentName}
+Curso/Período: ${courseText}
+Assunto: ${problemText}
+
+Mensagem:
+Olá equipe UniCatólica! Consultei o portal de autoatendimento CIA 2.1 e preciso de orientação referente ao caso acima.
+
+Atendimento gerado pelo portal CIA 2.1 – Equipe 404`;
+  }
+
+  function updatePreview() {
+    previewEl.textContent = buildFormattedMessage();
+  }
+
+  [sectorEl, problemEl, nameEl, courseEl].forEach(el => {
+    if (el) el.addEventListener('input', updatePreview);
+  });
+
+  updatePreview();
+
+  if (btnCopyWa) {
+    btnCopyWa.addEventListener('click', () => {
+      const [sectorName] = sectorEl.value.split('|');
+      const problemText = problemEl.value.trim() || 'Atendimento geral via Assistente CIA 2.1';
+      const formattedText = buildFormattedMessage();
+
+      navigator.clipboard.writeText(formattedText).catch(() => {});
+
+      const label = document.getElementById('copy-whatsapp-label');
+      if (label) {
+        label.textContent = 'Copiado! Abrindo WhatsApp...';
+        setTimeout(() => { label.textContent = 'Copiar & WhatsApp CIA'; }, 3000);
+      }
+
+      logTelemetryEvent({
+        tipo: "Dúvida/Problema Enviado",
+        descricao: problemText,
+        setor: sectorName,
+        resolveu: "-",
+        nota: "-",
+        reutilizaria: "-"
+      });
+
+      const waUrl = `https://api.whatsapp.com/send/?phone=556332212100&text=${encodeURIComponent(formattedText)}`;
+      window.open(waUrl, '_blank', 'noopener');
+    });
+  }
+
+  if (btnEmail) {
+    btnEmail.addEventListener('click', () => {
+      const [sectorName, sectorEmail] = sectorEl.value.split('|');
+      const problemText = problemEl.value.trim() || 'Solicitação de Atendimento CIA 2.1';
+      const formattedText = buildFormattedMessage();
+
+      logTelemetryEvent({
+        tipo: "Dúvida/Problema Enviado",
+        descricao: problemText,
+        setor: sectorName,
+        resolveu: "-",
+        nota: "-",
+        reutilizaria: "-"
+      });
+
+      const subject = encodeURIComponent(`Atendimento CIA 2.1 - ${sectorName}`);
+      window.location.href = `mailto:${sectorEmail}?subject=${subject}&body=${encodeURIComponent(formattedText)}`;
+    });
   }
 }
 
+// =============================================================
+// MODAL DE VALIDAÇÃO & TELEMETRIA AO VIVO (FORMSPREE + LOCALSTORAGE)
+// =============================================================
 function setupValidationModal() {
   const modal = document.getElementById('validation-modal');
   const closeBtn = document.getElementById('close-modal-btn');
   const form = document.getElementById('mvp-validation-form');
 
   if (closeBtn && modal) {
-    closeBtn.addEventListener('click', closeValidationModal);
-  }
-
-  if (modal) {
-    modal.addEventListener('keydown', (e) => {
-      if (e.key !== 'Tab') return;
-      const focusable = Array.from(
-        modal.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]')
-      ).filter(el => el.offsetParent !== null);
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    });
+    closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
   }
 
   if (form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       const formData = new FormData(form);
-      const data = {
+      const comentario = (formData.get('comentario') || '').trim();
+
+      logTelemetryEvent({
         tipo: "Pesquisa Completa MVP",
-        resolveu_duvida: formData.get('resolveu'),
-        nota_facilidade: formData.get('facilidade'),
-        reutilizaria: formData.get('reutilizaria'),
-        comentario: formData.get('comentario')
-      };
+        descricao: comentario || "Avaliação de usabilidade concluída pelo aluno",
+        setor: "Secretaria Acadêmica",
+        resolveu: formData.get('resolveu'),
+        nota: Number(formData.get('facilidade')).toFixed(1),
+        reutilizaria: formData.get('reutilizaria')
+      });
 
-      sendDataToFormspree(data);
-
-      document.getElementById('mvp-validation-form').classList.add('hidden');
+      form.classList.add('hidden');
       document.getElementById('modal-success-msg').classList.remove('hidden');
-
-      setTimeout(() => {
-        closeValidationModal();
-      }, 2500);
+      setTimeout(() => modal.classList.add('hidden'), 2200);
     });
   }
 }
@@ -690,40 +537,46 @@ function setupValidationModal() {
 function openValidationModal() {
   const modal = document.getElementById('validation-modal');
   const jaRespondeu = localStorage.getItem('cia_mvp_pesquisa_respondida');
-  
   if (modal && !jaRespondeu) {
-    lastFocusedElement = document.activeElement;
     modal.classList.remove('hidden');
     localStorage.setItem('cia_mvp_pesquisa_respondida', 'true');
-    const closeBtn = document.getElementById('close-modal-btn');
-    if (closeBtn) closeBtn.focus();
   }
 }
 
-// ENVIO DE DADOS PARA O SEU ENDPOINT DO FORMSPREE
-function sendDataToFormspree(payload) {
+function logTelemetryEvent(eventObj) {
+  // 1. Grava no LocalStorage para aparecer instantaneamente no Dashboard Ao Vivo
+  const liveEvents = JSON.parse(localStorage.getItem('cia_live_telemetry') || '[]');
+  liveEvents.unshift({
+    origem: 'Ao Vivo',
+    tipo: eventObj.tipo,
+    descricao: eventObj.descricao,
+    setor: eventObj.setor,
+    resolveu: eventObj.resolveu,
+    nota: eventObj.nota,
+    reutilizaria: eventObj.reutilizaria,
+    timestamp: new Date().toISOString()
+  });
+  localStorage.setItem('cia_live_telemetry', JSON.stringify(liveEvents));
+
+  // 2. Dispara para o endpoint real do Formspree
   fetch(FORMSPREE_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
-    body: JSON.stringify(payload)
-  }).catch(err => console.log('Erro ao enviar métrica:', err));
+    body: JSON.stringify(eventObj)
+  }).catch(() => {});
 }
 
 function setActiveFilterTab(category) {
   activeFilter = category;
   document.querySelectorAll('.filter-tab').forEach(tab => {
-    const isActive = tab.dataset.filter === category;
-    tab.classList.toggle('active', isActive);
-    tab.setAttribute('aria-pressed', String(isActive));
+    tab.classList.toggle('active', tab.dataset.filter === category);
   });
   filterFaqs();
 }
 
 function refreshIcons() {
-  if (window.lucide) {
-    lucide.createIcons();
-  }
+  if (window.lucide) lucide.createIcons();
 }
