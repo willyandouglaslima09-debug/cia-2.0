@@ -91,7 +91,7 @@ Recomendado utilizar a extensão Live Server no VS Code para recarregamento auto
 
 Gabriel Oliveira Vidal
 
-João Vittor de Sousa Cortes
+João Victtor de Sousa Cortes
 
 Karen Lorena Kuhn Silva
 
